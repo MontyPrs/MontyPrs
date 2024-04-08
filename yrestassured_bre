@@ -1,0 +1,4213 @@
+SRC MAIN JAVA
+PAYLOAD
+
+package payload;
+
+public class pricing_bre_sl_shakti_banking {
+	
+
+	//TODO make a java bean for the request object and then objectMapper serialize. use lombok too
+	public static String payload1(String roi,String LOAN_AMOUNT,String PROCESSING_FEE,
+			String NET_INSURANCE_PENETRATION,String CERSAI,String STAMP_DUTY,
+			String PRE_OR_PART_PAYMENT_CHARGES,String FORECLOSURE_CHARGES,
+			String NO_OF_PROPERTIES,String LEGAL_TECHNICAL_CHARGES,String DOCUMENT_CHARGES) {
+		return "{\r\n"
+				+ "\r\n"
+				+ "    \"ruleid\": \"8777\",\r\n"
+				+ "\r\n"
+				+ "    \"programName\": \"Pricing BRE\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id\": \"LAFID294161430\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id_2\": \"\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id_3\": \"\",\r\n"
+				+ "\r\n"
+				+ "    \"application\": {\r\n"
+				+ "\r\n"
+				+ "        \"COMMERCIAL\": {\r\n"
+				+ "\r\n"
+				+ "           \"CERSAI\": \""+CERSAI+"\",\r\n"
+				+ "\r\n"
+				+ "            \"STAMP_DUTY\": \""+STAMP_DUTY+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PROCESSING_FEE\": \""+PROCESSING_FEE+"\",\r\n"
+				+ "\r\n"
+				+ "            \"DOCUMENT_CHARGES\": \""+DOCUMENT_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"FORECLOSURE_CHARGES\": \""+FORECLOSURE_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"LEGAL_TECHNICAL_CHARGES\": \""+LEGAL_TECHNICAL_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"NO_OF_PROPERTIES\": \""+NO_OF_PROPERTIES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"NET_INSURANCE_PENETRATION\": \""+NET_INSURANCE_PENETRATION+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PRE_OR_PART_PAYMENT_CHARGES\": \""+PRE_OR_PART_PAYMENT_CHARGES+"\"\r\n"
+				+ "\r\n"
+				+ "},\r\n"
+				+ "\r\n"
+				+ "        \"LOAN_DETAILS\": {\r\n"
+				+ "\r\n"
+				+ "            \"ROI\": \""+roi+"\",\r\n"
+				+ "\r\n"
+				+ "            \"LOAN_AMOUNT\": \""+LOAN_AMOUNT+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PROGRAM_CODE\": \"SL-GROMIC-SHAKTI-BANK\"\r\n"
+				+ "\r\n"
+				+ "           \r\n"
+				+ "\r\n"
+				+ "        }\r\n"
+				+ "\r\n"
+				+ "    }\r\n"
+				+ "\r\n"
+				+ "}";
+	}
+	}
+	
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+package payload;
+
+public class pricingbre {
+public static String payload(String roi,String PROCESSING_FEE,String NET_INSURANCE_PENETRATION,
+		String PRE_OR_PART_PAYMENT_CHARGES,String FORECLOSURE_CHARGES,String LOAN_AMOUNT) {
+	return "{\r\n"
+			+ "\r\n"
+			+ "    \"ruleid\": \"8777\",\r\n"
+			+ "\r\n"
+			+ "    \"programName\": \"Pricing BRE\",\r\n"
+			+ "\r\n"
+			+ "    \"reference_id\": \"LAFID294161430\",\r\n"
+			+ "\r\n"
+			+ "    \"reference_id_2\": \"\",\r\n"
+			+ "\r\n"
+			+ "    \"reference_id_3\": \"\",\r\n"
+			+ "\r\n"
+			+ "    \"application\": {\r\n"
+			+ "\r\n"
+			+ "        \"COMMERCIAL\": {\r\n"
+			+ "\r\n"
+			+ "           \"CERSAI\": 0,\r\n"
+			+ "\r\n"
+			+ "            \"STAMP_DUTY\": \"\",\r\n"
+			+ "\r\n"
+			+ "            \"PROCESSING_FEE\": \""+PROCESSING_FEE+"\",\r\n"
+			+ "\r\n"
+			+ "            \"DOCUMENT_CHARGES\": 0,\r\n"
+			+ "\r\n"
+			+ "            \"FORECLOSURE_CHARGES\": \""+FORECLOSURE_CHARGES+"\",\r\n"
+			+ "\r\n"
+			+ "            \"LEGAL_TECHNICAL_CHARGES\": 3000,\r\n"
+			+ "\r\n"
+			+ "            \"NO_OF_PROPERTIES\": 1,\r\n"
+			+ "\r\n"
+			+ "            \"NET_INSURANCE_PENETRATION\": \""+NET_INSURANCE_PENETRATION+"\",\r\n"
+			+ "\r\n"
+			+ "            \"PRE_OR_PART_PAYMENT_CHARGES\":\""+PRE_OR_PART_PAYMENT_CHARGES+"\"\r\n"
+			+ "\r\n"
+			+ "        },\r\n"
+			+ "\r\n"
+			+ "        \"LOAN_DETAILS\": {\r\n"
+			+ "\r\n"
+			+ "            \"ROI\": \""+roi+"\",\r\n"
+			+ "\r\n"
+			+ "            \"LOAN_AMOUNT\": \"700000\",\r\n"
+			+ "\r\n"
+			+ "            \"PROGRAM_CODE\": \"USL-SANJ-ABB\"\r\n"
+			+ "\r\n"
+			+ "           \r\n"
+			+ "\r\n"
+			+ "        }\r\n"
+			+ "\r\n"
+			+ "    }\r\n"
+			+ "\r\n"
+			+ "}";
+}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+package payload;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/*import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import UtilityClasses.XLUtils;
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import reporter.ExtentListeners;
+*/
+public class sanjeevaniUSL_GST_N_1 {
+	/*
+	 * @Test
+	 * 
+	 * public void proposed_EMI_SanjeevaniUSLGST() throws JSONException, IOException
+	 * {
+	 * 
+	 * RestAssured.baseURI = "https://rules-uat.ugrocapital.com";
+	 * RequestSpecification postReq = RestAssured.given();
+	 * 
+	 * String Path =
+	 * "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+	 * String xlFile = "C:\\Users\\Prashant.Singh\\Downloads\\Pricing_test.xlsm";
+	 * 
+	 * System.out.println(XLUtils.getCellData(xlFile, "sheet1", 1, 0));
+	 * 
+	 * 
+	 * postReq.header("Content-Type", "application/json");
+	 * postReq.header("Authorization", "Bearer tD6tL7BpRIW9vNmvDBgZ"); String
+	 * postBody = readJson(Path); //postReq.body(postBody);
+	 * 
+	 * JSONObject jsonObject = new JSONObject(postBody);
+	 * 
+	 * jsonObject.put("reference_id","LAFID294161431");
+	 * 
+	 * 
+	 * JSONObject parentObject1 = jsonObject.getJSONObject("application");
+	 * 
+	 * JSONObject parentObject2 = parentObject1.getJSONObject("LOAN_DETAILS");
+	 * JSONObject parentObject3 = parentObject1.getJSONObject("COMMERCIAL"); int
+	 * rowNum = XLUtils.getRowCount(xlFile, "Sheet1"); int colNum =
+	 * XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+	 * 
+	 * for (int i = 1; i <= 10; i++) {
+	 * 
+	 * for (int j = 0; j < 1; j++) { //
+	 * parentObject3.put("ROI",XLUtils.getCellData(xlFile, "sheet1", i, j)); for
+	 * (int k = 1; k <= 3; k++) { for (int l = 1; l < 2; l++) { for (int m = 1; m <=
+	 * 3; m++) { for (int n = 2; n < 3; n++)
+	 * 
+	 * { for (int o = 1; o <= 6; o++) { for (int p = 3; p < 4; p++)
+	 * 
+	 * { for (int q = 1; q <= 6; q++) { for (int r = 4; r < 5; r++) {
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "ROI  :" + XLUtils.getCellData(xlFile,
+	 * "sheet1", i, j)); ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" +
+	 * XLUtils.getCellData(xlFile, "sheet1", k, l));
+	 * ExtentListeners.test.log(Status.INFO, "NET_INSURANCE_PENETRATION  :" +
+	 * XLUtils.getCellData(xlFile, "sheet1", m, n));
+	 * ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" +
+	 * XLUtils.getCellData(xlFile, "sheet1", o, p));
+	 * ExtentListeners.test.log(Status.INFO, "FORECLOSURE_CHARGES  :" +
+	 * XLUtils.getCellData(xlFile, "sheet1", q, r)); JSONObject test =
+	 * parentObject2.put("ROI", XLUtils.getCellData(xlFile, "sheet1", i, j));
+	 * JSONObject test1 = parentObject2.put("PROCESSING_FEE",
+	 * XLUtils.getCellData(xlFile, "sheet1", k, l)); JSONObject test2 =
+	 * parentObject3.put("NET_INSURANCE_PENETRATION", XLUtils.getCellData(xlFile,
+	 * "sheet1", m, n)); JSONObject test3 =
+	 * parentObject3.put("PRE_OR_PART_PAYMENT_CHARGES", XLUtils.getCellData(xlFile,
+	 * "sheet1", o, p)); JSONObject test4 = parentObject3.put("FORECLOSURE_CHARGES",
+	 * XLUtils.getCellData(xlFile, "sheet1", q, r));
+	 * 
+	 * String modifiedJson = jsonObject.toString(); //
+	 * System.out.println(test.toString()); postReq.body(modifiedJson); Response
+	 * resp = postReq.request(Method.POST, "/api/v1/run"); // Print response in
+	 * console String resBody = resp.getBody().asString();
+	 * ExtentListeners.test.log(Status.INFO, "Start Body ************************");
+	 * ExtentListeners.test.log(Status.INFO, resBody); //
+	 * System.out.println("Response=>" + resp.prettyPrint());
+	 * ExtentListeners.test.log(Status.INFO,
+	 * "End of response body:_______________ ");
+	 * 
+	 * Boolean success = resp.jsonPath().get("success");
+	 * Assert.assertEquals(success, true); ExtentListeners.test.log(Status.INFO,
+	 * "success            :" + success); int statuscode = resp.getStatusCode();
+	 * Assert.assertEquals(statuscode, 200);
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+	 * float ROI = resp.jsonPath().getFloat(
+	 * "data.rules_result.application.varResult.standardROI.value"); //
+	 * System.out.println(ROI); float pRocessingFee = resp.jsonPath() .getFloat(
+	 * "data.rules_result.application.varResult.standardProcessingFee.value"); //
+	 * System.out.println(PROCESSING_FEE); float NET_INSURANCE_PENETRATION =
+	 * resp.jsonPath() .getFloat(
+	 * "data.rules_result.application.varResult.standardInsurancePenetration.value")
+	 * ; String PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath() .getString(
+	 * "data.rules_result.application.varResult.standardPartPaymentcharges.value");
+	 * String FORECLOSURE_CHARGES = resp.jsonPath() .getString(
+	 * "data.rules_result.application.varResult.standardForeclosureCharges.value");
+	 * // System.out.println(NET_INSURANCE_PENETRATION); String message =
+	 * resp.jsonPath().getString(
+	 * "data.rules_result.application.varResult.standardROI.message"); //
+	 * context.setAttribute("ROI", ROI);
+	 * 
+	 * Boolean result = resp.jsonPath().getBoolean(
+	 * "data.rules_result.application.varResult.standardROI.result"); Boolean
+	 * result1 = resp.jsonPath() .getBoolean(
+	 * "data.rules_result.application.varResult.standardProcessingFee.result");
+	 * Boolean result2 = resp.jsonPath() .getBoolean(
+	 * "data.rules_result.application.varResult.standardInsurancePenetration.result"
+	 * ); Boolean result3 = resp.jsonPath() .getBoolean(
+	 * "data.rules_result.application.varResult.standardPartPaymentcharges.result");
+	 * Boolean result4 = resp.jsonPath() .getBoolean(
+	 * "data.rules_result.application.varResult.standardForeclosureCharges.result");
+	 * // context.setAttribute("ROI", result); String final_status =
+	 * resp.jsonPath().getString("data.final_status"); Boolean final_result =
+	 * resp.jsonPath().getBoolean("data.final_result"); String
+	 * applicationProgramCode = resp.jsonPath() .getString(
+	 * "data.rules_result.application.varResult.applicationProgramCode.value");
+	 * 
+	 * String deviationCode = resp.jsonPath().getString(
+	 * "data.deviation.application.standardROI.deviationCode"); String
+	 * deviationCode1 = resp.jsonPath()
+	 * .getString("data.deviation.application.standardProcessingFee.deviationCode");
+	 * String deviationCode2 = resp.jsonPath() .getString(
+	 * "data.deviation.application.standardInsurancePenetration.deviationCode");
+	 * String deviationCode3 = resp.jsonPath() .getString(
+	 * "data.deviation.application.standardPartPaymentcharges.deviationCode");
+	 * String deviationCode4 = resp.jsonPath() .getString(
+	 * "data.deviation.application.standardForeclosureCharges.deviationCode");
+	 * String message1 =
+	 * resp.jsonPath().getString("data.deviation.application.standardROI.message");
+	 * Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB"); //
+	 * System.out.println("ROI is :" + ROI); if (ROI >= 19) {
+	 * ExtentListeners.test.log(Status.INFO, "ROI is            :" + ROI); //
+	 * context.setAttribute("Standard_ROI :", ROI);
+	 * ExtentListeners.test.log(Status.INFO, "result            :" + result);
+	 * Assert.assertEquals(result, true);
+	 * 
+	 * 
+	 * SoftAssert sf = new SoftAssert(); sf.assertEquals(result, false);
+	 * 
+	 * sf.assertAll();
+	 * 
+	 * 
+	 * // context.setAttribute(deviationCode, message);
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "message           :" + message);
+	 * Assert.assertEquals(message, "Standard ROI norm is met"); } else if (ROI >
+	 * 18.51) { ExtentListeners.test.log(Status.INFO, "   ROI is less than 19");
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode :" + deviationCode);
+	 * Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0]");
+	 * ExtentListeners.test.log(Status.INFO, "message       :" + message1);
+	 * Assert.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]"); //
+	 * context.setAttribute("deviationCode", deviationCode);
+	 * Assert.assertEquals(result, false); ExtentListeners.test.log(Status.INFO,
+	 * " result       :" + result); // context.setAttribute("result", result); }
+	 * else if (ROI > 16.01) { ExtentListeners.test.log(Status.INFO,
+	 * "ROI is less than 18.51");
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode  :" + deviationCode);
+	 * Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0.5]"); //
+	 * context.setAttribute("deviationCode", deviationCode);
+	 * ExtentListeners.test.log(Status.INFO, "message        :" + message1);
+	 * Assert.assertEquals(message1, "[Commerical Norms-Customer IRR >=0.5%]");
+	 * Assert.assertEquals(result, false); ExtentListeners.test.log(Status.INFO,
+	 * " result        :" + result); // context.setAttribute("result", result); }
+	 * else { ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01");
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode  :" + deviationCode);
+	 * Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-3]"); //
+	 * context.setAttribute("deviationCode", deviationCode);
+	 * ExtentListeners.test.log(Status.INFO, "message        :" + message1);
+	 * Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+	 * Assert.assertEquals(result, false); ExtentListeners.test.log(Status.INFO,
+	 * " result        :" + result); } if (pRocessingFee == 2.0) {
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee);
+	 * Assert.assertEquals(result1, true); ExtentListeners.test.log(Status.INFO,
+	 * "result  :" + result1); } else if (pRocessingFee < 2.0) {
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee);
+	 * Assert.assertEquals(result1, false); ExtentListeners.test.log(Status.INFO,
+	 * "result  :" + result1); ExtentListeners.test.log(Status.INFO,
+	 * "deviationCode :" + deviationCode1); Assert.assertEquals(deviationCode,
+	 * "[DEV-PF-0]"); // System.out.println("message :" + message1); //
+	 * Assert.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]"); } if
+	 * (NET_INSURANCE_PENETRATION == 1.50) { ExtentListeners.test.log(Status.INFO,
+	 * "NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION);
+	 * 
+	 * Assert.assertEquals(result2, true); ExtentListeners.test.log(Status.INFO,
+	 * "result  :" + result2); }
+	 * 
+	 * else if (NET_INSURANCE_PENETRATION < 1.50) {
+	 * 
+	 * ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" +
+	 * NET_INSURANCE_PENETRATION); Assert.assertEquals(result2, false);
+	 * ExtentListeners.test.log(Status.INFO, "result  :" + result2);
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode :" + deviationCode2);
+	 * Assert.assertEquals(deviationCode2, "[DEV-INSPEN-0]"); //
+	 * System.out.println("message :" + message1); // Assert.assertEquals(message1,
+	 * "[Commerical Norms-Customer IRR > 0%]"); } if
+	 * (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+	 * ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" +
+	 * PRE_OR_PART_PAYMENT_CHARGES); Assert.assertEquals(result3, true);
+	 * ExtentListeners.test.log(Status.INFO, "result  :" + result3); // message
+	 * pending } else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+	 * ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" +
+	 * PRE_OR_PART_PAYMENT_CHARGES); Assert.assertEquals(result3, false);
+	 * ExtentListeners.test.log(Status.INFO, "result  :" + result3);
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode :" + deviationCode3);
+	 * Assert.assertEquals(deviationCode3, "[DEV-PRE-PART]"); } if
+	 * (FORECLOSURE_CHARGES.contains("Yes")) { ExtentListeners.test.log(Status.INFO,
+	 * "PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES);
+	 * Assert.assertEquals(result4, true); ExtentListeners.test.log(Status.INFO,
+	 * "result  :" + result4); // message pending } else if
+	 * (FORECLOSURE_CHARGES.contains("No")) { ExtentListeners.test.log(Status.INFO,
+	 * "PROCESSING_FEE  :" + FORECLOSURE_CHARGES); Assert.assertEquals(result4,
+	 * false); ExtentListeners.test.log(Status.INFO, "result  :" + result4);
+	 * ExtentListeners.test.log(Status.INFO, "deviationCode :" + deviationCode4);
+	 * Assert.assertEquals(deviationCode4, "[DEV-FORE-CLOSURE]");
+	 * 
+	 * }
+	 * 
+	 * if (ROI == 19 && pRocessingFee == 2 && NET_INSURANCE_PENETRATION == 1.50 &&
+	 * PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&
+	 * FORECLOSURE_CHARGES.contains("Yes")) { ExtentListeners.test.log(Status.INFO,
+	 * "final_status :" + final_status); Assert.assertEquals(final_status, "PASS");
+	 * ExtentListeners.test.log(Status.INFO, "final_result  :" + final_result);
+	 * Assert.assertEquals(final_result, true);
+	 * 
+	 * } else { ExtentListeners.test.log(Status.INFO, "final_status  :" +
+	 * final_status); Assert.assertEquals(final_status, "FAIL");
+	 * ExtentListeners.test.log(Status.INFO, "final_result :" + final_result);
+	 * Assert.assertEquals(final_result, false); } } } } } } } } } } } }
+	 * 
+	 * 
+	 * 
+	 * private String readJson(String fileNam) {
+	 * 
+	 * try { return new String(Files.readAllBytes(Paths.get(fileNam))); } catch
+	 * (Exception e) {
+	 * 
+	 * throw new RuntimeException("Error reading json file+"); }
+	 * 
+	 * }
+	 */
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package payload;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class test {
+	public void setCellData(String path, String sheetName, String colName, int rowNum, String data) {
+		try {
+		FileInputStream fis = new FileInputStream(path);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		int index = workbook.getSheetIndex(sheetName);
+		int colNum = -1;
+		 
+		XSSFSheet sheet = workbook.getSheetAt(index);
+		XSSFRow row = sheet.getRow(0);
+		for (int i = 0; i < row.getLastCellNum(); i++) {
+		if (row.getCell(i).getStringCellValue().trim().equals(colName))
+		colNum = i;
+		}
+		sheet.autoSizeColumn(colNum);
+		row = sheet.getRow(rowNum - 1);
+		if (row == null)
+		row = sheet.createRow(rowNum - 1);
+		XSSFCell cell = row.getCell(colNum);
+		if (cell == null)
+		cell = row.createCell(colNum);
+		cell.setCellValue(data);
+		FileOutputStream fileOut = new FileOutputStream(path);
+		workbook.write(fileOut);
+		fileOut.close();
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		}
+	
+	public static void main(String[] args) {
+		test ob=new test();
+        String XlSX="D:\\test\\Test_data_Pricing.xlsx";
+
+		ob.setCellData(XlSX,"Sheet1","result",2,"test1");
+		ob.setCellData(XlSX,"Sheet1","ROI",2,"test2");
+		ob.setCellData(XlSX,"Sheet1","Message",2,"test3");
+		ob.setCellData(XlSX,"Sheet1","deviaton code",2,"test4");
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  package payload;
+
+public class test2_payload {
+	
+
+	
+	public static String payload2(String roi,String LOAN_AMOUNT,String PROCESSING_FEE,
+			String NET_INSURANCE_PENETRATION,String CERSAI,String STAMP_DUTY,
+			String PRE_OR_PART_PAYMENT_CHARGES,String FORECLOSURE_CHARGES,
+			String NO_OF_PROPERTIES,String LEGAL_TECHNICAL_CHARGES,String DOCUMENT_CHARGES) {
+		return "{\r\n"
+				+ "\r\n"
+				+ "    \"ruleid\": \"8777\",\r\n"
+				+ "\r\n"
+				+ "    \"programName\": \"Pricing BRE\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id\": \"LAFID294161430\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id_2\": \"\",\r\n"
+				+ "\r\n"
+				+ "    \"reference_id_3\": \"\",\r\n"
+				+ "\r\n"
+				+ "    \"application\": {\r\n"
+				+ "\r\n"
+				+ "        \"COMMERCIAL\": {\r\n"
+				+ "\r\n"
+				+ "           \"CERSAI\": \""+CERSAI+"\",\r\n"
+				+ "\r\n"
+				+ "            \"STAMP_DUTY\": \""+STAMP_DUTY+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PROCESSING_FEE\": \""+PROCESSING_FEE+"\",\r\n"
+				+ "\r\n"
+				+ "            \"DOCUMENT_CHARGES\": \""+DOCUMENT_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"FORECLOSURE_CHARGES\": \""+FORECLOSURE_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"LEGAL_TECHNICAL_CHARGES\": \""+LEGAL_TECHNICAL_CHARGES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"NO_OF_PROPERTIES\": \""+NO_OF_PROPERTIES+"\",\r\n"
+				+ "\r\n"
+				+ "            \"NET_INSURANCE_PENETRATION\": \""+NET_INSURANCE_PENETRATION+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PRE_OR_PART_PAYMENT_CHARGES\": \""+PRE_OR_PART_PAYMENT_CHARGES+"\"\r\n"
+				+ "\r\n"
+				+ "},\r\n"
+				+ "\r\n"
+				+ "        \"LOAN_DETAILS\": {\r\n"
+				+ "\r\n"
+				+ "            \"ROI\": \""+roi+"\",\r\n"
+				+ "\r\n"
+				+ "            \"LOAN_AMOUNT\": \""+LOAN_AMOUNT+"\",\r\n"
+				+ "\r\n"
+				+ "            \"PROGRAM_CODE\": \"SL-GROMIC-SHAKTI-BANK\"\r\n"
+				+ "\r\n"
+				+ "           \r\n"
+				+ "\r\n"
+				+ "        }\r\n"
+				+ "\r\n"
+				+ "    }\r\n"
+				+ "\r\n"
+				+ "}";
+	}
+
+	public static String payload2(Object rOI, Object loan_amount, Object processing_Fees, Object insurance_Penetrat,
+			Object cERSAI_master, Object stamp_dutity, Object foreclosure, Object nO_OF_PROPERTIES,
+			Object legal_Technical_Charges, Object documentation_Charges) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	}
+	
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+package payload;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class test2 {
+	
+	@DataProvider(name = "testdata")
+	public static Object[][] excelDataReader() throws IOException {
+		String path = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\new_test_data.xlsx";
+		String excelsheet = "Sheet1";
+		FileInputStream fis = new FileInputStream(path);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheet(excelsheet);
+		XSSFRow row = sheet.getRow(0);
+		int noOfRows = sheet.getPhysicalNumberOfRows();
+		int noOfCols = row.getPhysicalNumberOfCells();
+		Object data[][] = new Object[noOfRows - 1][noOfCols];
+		for (int i = 1; i < 25; i++) {
+			for (int j = 0; j < 12; j++) {
+				Object cellData = null;
+				if (sheet.getRow(i).getCell(j).getCellType() == CellType.NUMERIC) {
+					cellData = sheet.getRow(i).getCell(j).getNumericCellValue();
+				} else if (sheet.getRow(i).getCell(j).getCellType() == CellType.STRING) {
+					cellData = sheet.getRow(i).getCell(j).getStringCellValue();
+				}
+
+				data[i - 1][j] = cellData;
+// System.out.println("Data "+data[i-1][j]);
+			}
+			System.out.println();
+		}
+// workbook.close();
+//		System.out.println(data);
+		return data;
+	}
+
+	@Test(dataProvider = "testdata")
+	public void demoClass(Object Scenario_no,Object ROI, Object Loan_amount, Object Processing_Fees, Object Insurance_Penetrat,
+			Object CERSAI_master, Object Stamp_dutity, Object Pre_Part, Object Foreclosure, Object NO_OF_PROPERTIES,
+			Object Legal_Technical_Charges, Object Documentation_Charges) {
+		System.out.println("ROI :" + Float.valueOf(ROI.toString()));
+//		System.out.println("Loan_amount :" + Loan_amount);
+//		System.out.println("Processing_Fees :" + Processing_Fees);
+//		System.out.println("Insurance_Penetrat :" + Insurance_Penetrat);
+//		System.out.println("CERSAI_master :" + CERSAI_master);
+//		System.out.println("Stamp_dutity :" + Stamp_dutity);
+//		System.out.println("Pre_Part :" + Pre_Part);
+//		System.out.println("Foreclosure :" + Foreclosure);
+//		System.out.println("NO_OF_PROPERTIES :" + NO_OF_PROPERTIES);
+//		System.out.println("Legal_Technical_Charges :" + Legal_Technical_Charges);
+//		System.out.println("Documentation_Charges :" + Documentation_Charges);
+		
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------
+SRC TEST JAVA
+
+functions
+
+package functions;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.junit.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import functions.ROI_method;
+import functions.processingFee;
+import groovyjarjarantlr4.v4.parse.ANTLRParser.parserRule_return;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import payload.pricingbre;
+import payload.test;
+import reporter.ExtentListeners;
+
+public class base_url_api_status extends baseClass1 {
+	public float loanAmount;
+	public Response resp;
+	public RequestSpecification res;
+
+	public void base_url_api(String xlFile,String write,int rowNum,int colNum,RequestSpecification res,Response resp,String modifiedJson1,String noproertiy,
+			String resBody,Boolean success,int statuscode) throws IOException {
+
+		 xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\New.xlsx";
+		 write = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\11_03_2024_test_data.xlsx";
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+
+		 rowNum = XLUtils.getRowCount(xlFile, "Sheet2");
+		System.out.println("Total row is :" + rowNum);
+		 colNum = XLUtils.getCellCount(xlFile, "Sheet2", rowNum);
+		System.out.println("Total Col is :" + colNum);
+		SoftAssert asser = new SoftAssert();
+
+		/*ROI_method obj = new ROI_method();
+		processingFee obj1 = new processingFee();*/
+		for (int i = 1; i <= 24; i++) {
+
+			 modifiedJson1 = pricing_bre_sl_shakti_banking.payload1(XLUtils.getCellData(xlFile, "Sheet2", i, 0),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 1), XLUtils.getCellData(xlFile, "Sheet2", i, 2),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 3), XLUtils.getCellData(xlFile, "Sheet2", i, 4),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 5), XLUtils.getCellData(xlFile, "Sheet2", i, 6),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 7), XLUtils.getCellData(xlFile, "Sheet2", i, 8),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 9), XLUtils.getCellData(xlFile, "Sheet2", i, 10));
+
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "sheet2", i, 0));
+			ExtentListeners.test.log(Status.INFO, XLUtils.getCellData(xlFile, "sheet2", i, 1));
+			 noproertiy = (XLUtils.getCellData(xlFile, "sheet2", i, 8));
+			res.body(modifiedJson1);
+
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson1);
+			resp = res.request(Method.POST, "/api/v1/run");
+			 resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			 success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			 statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+		}
+	}
+
+}
+----------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class cersai_master extends baseClass1 
+{
+	public void getVeriy_Cersai(float CERSAI,Boolean resultCERSAI,String CERSAIdeviationcode, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual CERSAI", i + 1, String.valueOf(CERSAI));//change colum name
+
+		System.out.println("Verify the CERSAI when CERSAI is:" + CERSAI + " ROIresult :" + resultCERSAI);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_CERSAI", i + 1,
+				String.valueOf("Verify the CERSAI when CERSAI is :" + CERSAI));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "SL_GM_Shakti_bank", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 44);//change i value
+		float roiValue = Float.parseFloat(cellValue);
+		if (roiValue == CERSAI) {
+
+			setCellData(xlFile, "Sheet1", "CERSAI(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "CERSAI(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual CERSAI result", i + 1,
+		 * String.valueOf(resultCERSAI));//change colum name
+		 * 
+		 * System.out.println(resultCERSAI); String roirlt = XLUtils.getCellData(xlFile,
+		 * "Sheet1", i, 5);//change i value if
+		 * (roirlt.equals(String.valueOf(resultCERSAI))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "CERSAI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "CERSAI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual CERSAI deviation code", i + 1, String.valueOf(CERSAIdeviationcode));//change colum name
+
+		System.out.println(CERSAIdeviationcode);
+		String expCersai = XLUtils.getCellData(xlFile, "Sheet1", i, 47);//change i value
+		if (expCersai.equals(String.valueOf(CERSAIdeviationcode))) {
+
+			setCellData(xlFile, "Sheet1", "CERSAI_deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "CERSAI_deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	}
+
+}
+---------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class documentation_Charges extends baseClass1 
+{
+
+	public void getVerifyDocumentcharges(float documentCharges,Boolean result6documentCharges,String documentChargesdeviation, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(documentCharges));//change colum name
+
+		System.out.println("Verify the ROI when ROI is:" + documentCharges + " ROIresult :" + result6documentCharges);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_Document_charges", i + 1,
+				String.valueOf("Verify the documentCharges when documentCharges is :" + documentCharges));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "Sheet1", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 77);//change i value
+		float roiValue = Float.parseFloat(cellValue);
+		if (roiValue == documentCharges) {
+
+			setCellData(xlFile, "Sheet1", "Documentation Charges(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Documentation Charges(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(result6documentCharges));//change colum name
+		 * 
+		 * System.out.println(result6documentCharges); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 6);//change i value if
+		 * (roirlt.equals(String.valueOf(result6documentCharges))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, String.valueOf(documentChargesdeviation));//change colum name
+
+		System.out.println(documentChargesdeviation);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 80);//change i value
+		if (deviatn.equals(String.valueOf(documentChargesdeviation))) {
+
+			setCellData(xlFile, "Sheet1", "Documentation Charges (Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Documentation Charges (Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	}
+
+	
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+public class Final_status extends baseClass1 
+{
+	public void getVerify_final_status(String final_status, int i, String xlFile) throws IOException
+	{
+	//setCellData(xlFile, "Sheet1", "Actual final_status", i + 1, String.valueOf(final_status));
+
+	System.out.println(final_status);
+	String Fstatus = XLUtils.getCellData(xlFile, "Sheet1", i, 83);// Trim any extra spaces
+	//final_status = final_status.trim(); // Trim final_status as well
+
+	if (Fstatus.contains(final_status)) {
+		setCellData(xlFile, "Sheet1", "Final status(Pass/fail)", i + 1, "Pass");
+	} else {
+		setCellData(xlFile, "Sheet1", "Final status(Pass/fail)", i + 1, "Fail");
+	}
+	}}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class foreclosure_charge extends baseClass1
+{
+public void getVerifyForclosure(String FORECLOSURE_CHARGES,Boolean result4Forclousurechare,String ForClosuredeviationCode4, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(FORECLOSURE_CHARGES));//change colum name
+
+		System.out.println("Verify the ROI when ROI is:" + FORECLOSURE_CHARGES + " ROIresult :" + result4Forclousurechare);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_Forclouser_charges", i + 1,
+				String.valueOf("Verify the foreclosure_charge when foreclosure_charge is :" + FORECLOSURE_CHARGES));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "Sheet1", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 62);//change i value
+		//float roiValue = Float.parseFloat(cellValue);
+		if (cellValue.contains(FORECLOSURE_CHARGES)) {
+
+			setCellData(xlFile, "Sheet1", "Foreclosure(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Foreclosure(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(result4Forclousurechare));//change colum name
+		 * 
+		 * System.out.println(result4Forclousurechare); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 6);//change i value if
+		 * (roirlt.equals(String.valueOf(result4Forclousurechare))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, String.valueOf(ForClosuredeviationCode4));//change colum name
+
+		System.out.println(ForClosuredeviationCode4);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 65);//change i value
+		if (deviatn.equals(String.valueOf(ForClosuredeviationCode4))) {
+
+			setCellData(xlFile, "Sheet1", "Forclousre_Deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Forclousre_Deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class Insurance_Penetrat extends baseClass1
+{
+	public void getVerifyInsurancePentration(float NET_INSURANCE_PENETRATION,Boolean result2InPenetration,String InsurancePendeviationCode2, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual Insurance Penetart", i + 1, String.valueOf(NET_INSURANCE_PENETRATION));//change colum name
+
+		System.out.println("Verify the  NET_INSURANCE_PENETRATION when NET_INSURANCE_PENETRATION is :" + NET_INSURANCE_PENETRATION + " ROIresult :" + result2InPenetration);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_InsurancePen", i + 1,
+				String.valueOf("Verify the NET_INSURANCE_PENETRATION when is NET_INSURANCE_PENETRATION :" + NET_INSURANCE_PENETRATION));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "SL_GM_Shakti_bank", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 37);//change i value
+		float roiValue = Float.parseFloat(cellValue);
+		if (roiValue == NET_INSURANCE_PENETRATION) {
+
+			setCellData(xlFile, "Sheet1", "Insurance Penetrat(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Insurance Penetrat(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual Insurance Penetrat result", i + 1,
+		 * String.valueOf(result2InPenetration));//change colum name
+		 * 
+		 * System.out.println(result2InPenetration); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 5);//change i value if
+		 * (roirlt.equals(String.valueOf(result2InPenetration))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "Insurance Penetrat result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "Insurance Penetrat result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual Insurance Penetrat deviation code", i + 1, String.valueOf(InsurancePendeviationCode2));//change colum name
+
+		System.out.println(InsurancePendeviationCode2);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 40);//change i value
+		if (deviatn.equals(String.valueOf(InsurancePendeviationCode2))) {
+
+			setCellData(xlFile, "Sheet1", "Insurance Penetrat Deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Insurance Penetrat Deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	
+
+	}}
+--------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class legal_Technical_Charges extends baseClass1
+{
+	
+public void getVerifylegal_technical_charges(float legalTechnicalCharges,Boolean result5legalTechnicalCharges,String legalTechnicalChargesdeviatoncode, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(legalTechnicalCharges));//change colum name
+
+		System.out.println("Verify the ROI when ROI is:" + legalTechnicalCharges + " ROIresult :" + result5legalTechnicalCharges);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_legal_technical_charges", i + 1,
+				String.valueOf("Verify the legal_Technical_Charges when legal_Technical_Charges is :" + legalTechnicalCharges));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "Sheet1", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 70);//change i value
+		float roiValue = Float.parseFloat(cellValue);
+		if (roiValue == legalTechnicalCharges) {
+
+			setCellData(xlFile, "Sheet1", "Legal/Technical Charges(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Legal/Technical Charges(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(result5legalTechnicalCharges));//change colum name
+		 * 
+		 * System.out.println(result5legalTechnicalCharges); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 6);//change i value if
+		 * (roirlt.equals(String.valueOf(result5legalTechnicalCharges))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, String.valueOf(legalTechnicalChargesdeviatoncode));//change colum name
+
+		System.out.println(legalTechnicalChargesdeviatoncode);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 73);//change i value
+		if (deviatn.equals(String.valueOf(legalTechnicalChargesdeviatoncode))) {
+
+			setCellData(xlFile, "Sheet1", "Legal/Technical Charges_deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Legal/Technical Charges_deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	}
+
+}
+
+--------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class pre_part_charge extends baseClass1  
+{
+public void getVerifyPrePart(String PRE_OR_PART_PAYMENT_CHARGES,Boolean result3prePartPaycharges,String PrePayChargedeviationCode3, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(PRE_OR_PART_PAYMENT_CHARGES));//change colum name
+
+		System.out.println("Verify the ROI when ROI is:" + PRE_OR_PART_PAYMENT_CHARGES + " ROIresult :" + result3prePartPaycharges);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_Pre Partpayment charges", i + 1,
+				String.valueOf("Verify the PRE_OR_PART_PAYMENT_CHARGES when PRE_OR_PART_PAYMENT_CHARGES is :" + PRE_OR_PART_PAYMENT_CHARGES));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "Sheet1", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 55);//change i value
+		//float roiValue = Float.parseFloat(cellValue);
+		if (cellValue.contains(PRE_OR_PART_PAYMENT_CHARGES)) {
+
+			setCellData(xlFile, "Sheet1", "Pre Part_payment_charges(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Pre Part_payment_charges(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(result3prePartPaycharges));//change colum name
+		 * 
+		 * System.out.println(result3prePartPaycharges); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 6);//change i value if
+		 * (roirlt.equals(String.valueOf(result3prePartPaycharges))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, String.valueOf(PrePayChargedeviationCode3));//change colum name
+
+		System.out.println(PrePayChargedeviationCode3);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 58);//change i value
+		if (deviatn.equals(String.valueOf(PrePayChargedeviationCode3))) {
+
+			setCellData(xlFile, "Sheet1", "Pre Part_deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Pre Part_deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+	}
+	
+	
+
+}
+
+-----------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class processingFee extends baseClass1 {
+	public void getVerifySheet1(float pRocessingFee, Boolean result1stdPrcfee, String ProcessFeedeviationCode1, int i,
+			String xlFile) throws IOException {
+
+		//setCellData(xlFile, "Sheet1", "Actual Sheet1", i + 1, String.valueOf(pRocessingFee));// change colum name
+		System.out.println("Verify the pRocessingFee when pRocessingFee is:" + pRocessingFee + " ROIresult :" + result1stdPrcfee);// chnge
+
+		  setCellData(xlFile, "Sheet1", "Scenario description pf", i + 1,
+		 String.valueOf("Verify the Processing FEE when Processing FEE is :" + pRocessingFee));
+		/* * 
+		 * //c colum name // System.out.println(XLUtils.getCellData(xlFile,
+		 * "SL_GM_Shakti_bank", i, 2)); // System.out.println(ROI);
+		 */ String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 30);// change i value
+		float pfValue = Float.parseFloat(cellValue);
+		if (pfValue == pRocessingFee) {
+
+			setCellData(xlFile, "Sheet1", "PF(Pass,Fail)", i + 1, "Pass");// change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "PF(Pass,Fail)", i + 1, "Fail");// change colum name
+
+		}
+
+		// ++++++++++
+		//setCellData(xlFile, "Sheet1", "Actual Sheet1 result", i + 1, String.valueOf(result1stdPrcfee));// change
+																												// colum
+																												// name
+
+		/*
+		 * System.out.println(result1stdPrcfee); String pfresult =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 5);// change i value if
+		 * (pfresult.equals(String.valueOf(result1stdPrcfee))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "Sheet1 result(Pass,Fail)", i + 1, "Pass");//
+		 * change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "Sheet1 result(Pass,Fail)", i + 1, "Fail");// change colum name
+		 * 
+		 * }
+		 */
+
+		// float loanAmount =
+		// resp.jsonPath().getFloat("data.output.application.loanAmount");
+		// System.out.println(loanAmount);
+		// devi++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual Sheet1deviation code", i + 1,
+		 * String.valueOf(ProcessFeedeviationCode1));
+		 */// change colum name
+
+		System.out.println(ProcessFeedeviationCode1);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 33);// change i value
+		if (deviatn.equals(String.valueOf(ProcessFeedeviationCode1))) {
+
+			setCellData(xlFile, "Sheet1", "PF Deviation(Pass,Fail)", i + 1, "Pass");// change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "PF Deviation(Pass,Fail)", i + 1, "Fail");// change colum name
+
+		}
+	}
+
+	
+}
+--------------------------------------------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import io.restassured.response.Response;
+
+public class ROI_method extends baseClass1 {
+	public void getVerifyROI(float ROI,Boolean resultroi,String roideviationCode,float loanAmount, int i, String xlFile) throws IOException {
+		//String final_status,
+		setCellData(xlFile, "Sheet1", "Scenario description roi", i + 1,
+				  String.valueOf("Verify the ROI when ROI is :" + ROI+" and loan amount is :"+loanAmount));
+		
+		//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+
+		System.out.println("Verify the ROI when ROI is:" + ROI + " ROIresult :" + resultroi);
+		
+        //++++++++++++validation
+		
+		 
+		// System.out.println(XLUtils.getCellData(write, "Sheet1", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 23);
+		float roiValue = Float.parseFloat(cellValue);
+		if (roiValue == ROI) {
+
+			setCellData(xlFile, "Sheet1", "ROI(Pass,Fail)", i + 1, "Pass");
+		} else {
+			setCellData(xlFile, "Sheet1", "ROI(Pass,Fail)", i + 1, "Fail");
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(resultroi));
+		 * 
+		 * System.out.println(resultroi); String roirlt = XLUtils.getCellData(xlFile,
+		 * "Sheet1", i, 6);//change colum value if
+		 * (roirlt.equals(String.valueOf(resultroi))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass"); } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");
+		 * 
+		 * }
+		 */
+
+	//	float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+	//	System.out.println(loanAmount);
+		// devi++++++++++
+		setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, String.valueOf(roideviationCode));//change colum name
+
+		System.out.println(roideviationCode);
+		String deviatn = XLUtils.getCellData(xlFile, "Sheet1", i, 26);////change colum value
+		if (deviatn.equals(String.valueOf(roideviationCode))) {
+
+			setCellData(xlFile, "Sheet1", "Deviation(Pass,Fail)", i + 1, "Pass");//change colum name
+
+		}
+
+		else {
+			setCellData(xlFile, "Sheet1", "Deviation(Pass,Fail)", i + 1, "Fail");//change colum name
+//+++comment____
+		/*}
+		// finalstatus++++++++++
+		setCellData(write, "Sheet1", "Actual final_status", i + 1, String.valueOf(final_status));
+
+		System.out.println(final_status);
+		String Fstatus = XLUtils.getCellData(write, "Sheet1", i, 12).trim(); // Trim any extra spaces
+	//	final_status = final_status.trim(); // Trim final_status as well
+
+		if (Fstatus.equals(final_status)) {
+			setCellData(write, "Sheet1", "final_status(Pass,Fail)", i + 1, "Pass");
+		} else {
+			setCellData(write, "Sheet1", "final_status(Pass,Fail)", i + 1, "Fail");
+		}*/
+	}
+}}
+----------------------------------------------------------------------------------------------------------------------------------
+package functions;
+
+import java.io.IOException;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+
+public class stamp_dutity extends baseClass1 
+{
+public void getVerifystapdutiy(String stampDuty,Boolean resultstampDuty, int i, String xlFile) throws IOException {
+		
+		//setCellData(xlFile, "Sheet1", "Actual Stamp dutity", i + 1, String.valueOf(stampDuty));//change colum name
+
+		System.out.println("Verify the stampDuty when stampDuty is:" + stampDuty + " ROIresult :" + resultstampDuty);//chnge description
+		setCellData(xlFile, "Sheet1", "Scenario_Desription_Stamp_dutiy", i + 1,
+				String.valueOf("Verify the stamp_dutity when stamp_dutity is :" + stampDuty));//change colum name
+		// System.out.println(XLUtils.getCellData(xlFile, "SL_GM_Shakti_bank", i, 2));
+		// System.out.println(ROI);
+		String cellValue = XLUtils.getCellData(xlFile, "Sheet1", i, 51);//change i value
+		//float roiValue = Float.parseFloat(cellValue);
+		if (cellValue.contains(stampDuty)) {
+
+			setCellData(xlFile, "Sheet1", "Stamp dutity(Pass,Fail)", i + 1, "Pass");//change colum name
+		} else {
+			setCellData(xlFile, "Sheet1", "Stamp dutity(Pass,Fail)", i + 1, "Fail");//change colum name
+
+		}
+
+		// ++++++++++
+		/*
+		 * setCellData(xlFile, "Sheet1", "Actual roi result", i + 1,
+		 * String.valueOf(resultstampDuty));//change colum name
+		 * 
+		 * System.out.println(resultstampDuty); String roirlt =
+		 * XLUtils.getCellData(xlFile, "Sheet1", i, 5);//change i value if
+		 * (roirlt.equals(String.valueOf(result1stdPrcfee))) {
+		 * 
+		 * setCellData(xlFile, "Sheet1", "ROI result(Pass,Fail)", i + 1,
+		 * "Pass");//change colum name } else { setCellData(xlFile, "Sheet1",
+		 * "ROI result(Pass,Fail)", i + 1, "Fail");//change colum name
+		 * 
+		 * }
+		 */
+		
+	}
+	
+}
+-----------------------------------------------------------------------------------------------------------------------
+Pojo
+
+package pojo;
+
+public class pojo 
+{
+	String ROI, LOAN_AMOUNT, PROCESSING_FEE,
+	 NET_INSURANCE_PENETRATION, CERSAI, STAMP_DUTY,
+	 PRE_OR_PART_PAYMENT_CHARGES, FORECLOSURE_CHARGES,
+	 NO_OF_PROPERTIES, LEGAL_TECHNICAL_CHARGES, DOCUMENT_CHARGES;
+
+	public String getRoi() {
+		return ROI;
+	}
+
+	public void setRoi(String  ROI) {
+		this.ROI = ROI;
+	}
+
+	public String getLOAN_AMOUNT() {
+		return LOAN_AMOUNT;
+	}
+
+	public void setLOAN_AMOUNT(String lOAN_AMOUNT) {
+		LOAN_AMOUNT = lOAN_AMOUNT;
+	}
+
+	public String getPROCESSING_FEE() {
+		return PROCESSING_FEE;
+	}
+
+	public void setPROCESSING_FEE(String pROCESSING_FEE) {
+		PROCESSING_FEE = pROCESSING_FEE;
+	}
+
+	public String getNET_INSURANCE_PENETRATION() {
+		return NET_INSURANCE_PENETRATION;
+	}
+
+	public void setNET_INSURANCE_PENETRATION(String nET_INSURANCE_PENETRATION) {
+		NET_INSURANCE_PENETRATION = nET_INSURANCE_PENETRATION;
+	}
+
+	public String getCERSAI() {
+		return CERSAI;
+	}
+
+	public void setCERSAI(String cERSAI) {
+		CERSAI = cERSAI;
+	}
+
+	public String getSTAMP_DUTY() {
+		return STAMP_DUTY;
+	}
+
+	public void setSTAMP_DUTY(String sTAMP_DUTY) {
+		STAMP_DUTY = sTAMP_DUTY;
+	}
+
+	public String getPRE_OR_PART_PAYMENT_CHARGES() {
+		return PRE_OR_PART_PAYMENT_CHARGES;
+	}
+
+	public void setPRE_OR_PART_PAYMENT_CHARGES(String pRE_OR_PART_PAYMENT_CHARGES) {
+		PRE_OR_PART_PAYMENT_CHARGES = pRE_OR_PART_PAYMENT_CHARGES;
+	}
+
+	public String getFORECLOSURE_CHARGES() {
+		return FORECLOSURE_CHARGES;
+	}
+
+	public void setFORECLOSURE_CHARGES(String fORECLOSURE_CHARGES) {
+		FORECLOSURE_CHARGES = fORECLOSURE_CHARGES;
+	}
+
+	public String getNO_OF_PROPERTIES() {
+		return NO_OF_PROPERTIES;
+	}
+
+	public void setNO_OF_PROPERTIES(String nO_OF_PROPERTIES) {
+		NO_OF_PROPERTIES = nO_OF_PROPERTIES;
+	}
+
+	public String getLEGAL_TECHNICAL_CHARGES() {
+		return LEGAL_TECHNICAL_CHARGES;
+	}
+
+	public void setLEGAL_TECHNICAL_CHARGES(String lEGAL_TECHNICAL_CHARGES) {
+		LEGAL_TECHNICAL_CHARGES = lEGAL_TECHNICAL_CHARGES;
+	}
+
+	public String getDOCUMENT_CHARGES() {
+		return DOCUMENT_CHARGES;
+	}
+
+	public void setDOCUMENT_CHARGES(String dOCUMENT_CHARGES) {
+		DOCUMENT_CHARGES = dOCUMENT_CHARGES;
+	}
+
+	public pojo(String ROI, String lOAN_AMOUNT, String pROCESSING_FEE, String nET_INSURANCE_PENETRATION, String cERSAI,
+			String sTAMP_DUTY, String pRE_OR_PART_PAYMENT_CHARGES, String fORECLOSURE_CHARGES, String nO_OF_PROPERTIES,
+			String lEGAL_TECHNICAL_CHARGES, String dOCUMENT_CHARGES) {
+		super();
+		this.ROI = ROI;
+		LOAN_AMOUNT = lOAN_AMOUNT;
+		PROCESSING_FEE = pROCESSING_FEE;
+		NET_INSURANCE_PENETRATION = nET_INSURANCE_PENETRATION;
+		CERSAI = cERSAI;
+		STAMP_DUTY = sTAMP_DUTY;
+		PRE_OR_PART_PAYMENT_CHARGES = pRE_OR_PART_PAYMENT_CHARGES;
+		FORECLOSURE_CHARGES = fORECLOSURE_CHARGES;
+		NO_OF_PROPERTIES = nO_OF_PROPERTIES;
+		LEGAL_TECHNICAL_CHARGES = lEGAL_TECHNICAL_CHARGES;
+		DOCUMENT_CHARGES = dOCUMENT_CHARGES;
+	}
+	
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+pojo mapper
+
+package pojoMapper;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+//import org.apache.juneau.MediaType;
+import org.apache.juneau.json.JsonSerializer;
+import org.apache.poi.ss.usermodel.Cell;
+//import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import pojo.pojo;
+
+public class readPojo 
+{
+	
+	public static void main(String[] args) throws IOException {
+		
+		OkHttpClient client = new OkHttpClient();
+
+        MediaType JSON = MediaType.get("application/json; charset=utf-8");
+        
+        // Read data from Excel
+        FileInputStream fis = new FileInputStream(new File("C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\prashant.new.data.xlsx"));
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        Sheet sheet = workbook.getSheetAt(3);
+        Row row = sheet.getRow(1);
+        Cell cell = row.getCell(0); // replace with your column number
+        String cellValue;
+        switch (cell.getCellType()) {
+            case STRING:
+                cellValue = cell.getStringCellValue();
+                break;
+            case NUMERIC:
+                cellValue = String.valueOf(cell.getNumericCellValue());
+                break;
+            // handle more cases if needed
+            default:
+                cellValue = "";
+        }
+        // replace with your row number
+        
+        
+       // "24", "200000", "2", "3", "500", "Yes", "Yes", "Yes", "1", "3000", "3000"
+		
+        
+		
+		JsonSerializer jsonserializer =	JsonSerializer.DEFAULT_READABLE;
+		pojo Pojo=new pojo(row.getCell(0).getStringCellValue(), 
+        row.getCell(1).getStringCellValue(),
+		row.getCell(2).getStringCellValue(),
+		row.getCell(3).getStringCellValue(),
+		row.getCell(4).getStringCellValue(),
+		row.getCell(5).getStringCellValue(),
+		row.getCell(6).getStringCellValue(),
+		row.getCell(7).getStringCellValue(),
+		row.getCell(8).getStringCellValue(),
+		row.getCell(9).getStringCellValue(),
+		row.getCell(10).getStringCellValue());
+		
+		String pojoJson =jsonserializer.serialize(Pojo);
+		//System.out.println(pojoJson);
+		RequestBody body = RequestBody.create(pojoJson, JSON);
+		Request request = new Request.Builder()
+                .url("https://rules-uat.ugrocapital.com/api/v1/run")
+                .post(body).addHeader("Content-Type", "application/json").addHeader("Authorization",
+        				"Bearer tD6tL7BpRIW9vNmvDBgZ").build();
+		
+		try (Response response = client.newCall(request).execute()) {
+            System.out.println(response.body().string());
+        }
+	}
+	
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+Pricing bre
+
+package Pricing_Bre;
+
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Properties;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.JSONObject;
+import org.junit.Assert;
+import org.testng.annotations.BeforeClass;
+
+import UtilityClasses.ReadConfig;
+import UtilityClasses.XLUtils;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class baseClass1 {
+
+	public String getresponse = "data.rules_result.application.varResult";
+	public String dev = "data.deviation.application";
+	public float ROI, pRocessingFee, NET_INSURANCE_PENETRATION, CERSAI, legalTechnicalCharges, documentCharges, loanAmount;
+
+	public String stampDuty, PRE_OR_PART_PAYMENT_CHARGES, FORECLOSURE_CHARGES, applicationProgramCode;
+	public String noproertiy;
+	public String roideviationCode, ProcessFeedeviationCode1, InsurancePendeviationCode2, PrePayChargedeviationCode3,
+			ForClosuredeviationCode4, CERSAIdeviationcode, legalTechnicalChargesdeviatoncode, documentChargesdeviation;
+	public Boolean resultroi, result1stdPrcfee, result2InPenetration, result3prePartPaycharges, result4Forclousurechare,
+			resultCERSAI, resultstampDuty, result5legalTechnicalCharges, result6documentCharges,
+			resultapplicationprogramcode;
+	public String final_status;
+
+	public Boolean final_result, deviation_status;
+	public String messageroi, message1;
+	
+	ReadConfig read = new ReadConfig();
+	
+//	public String xlFile;
+//	public String write;
+	
+//	public RequestSpecification res;
+
+	/*
+	 * result,result1,result2,result3,result4; public String
+	 * deviationCode,deviationCode1,deviationCode2,deviationCode3,deviationCode4;
+	 */
+
+	public static RequestSpecification req;
+
+	public void getJsondata(Response resp) throws IOException {
+
+		pRocessingFee = resp.jsonPath().getFloat(getresponse + ".standardProcessingFee.value");
+
+		ROI = resp.jsonPath().getFloat(getresponse + ".standardROI.value");
+		// loanAmount=resp.jsonPath().getInt("data.output.application.loanAmount");
+		NET_INSURANCE_PENETRATION = resp.jsonPath().getFloat(getresponse + ".standardInsurancePenetration.value");
+		CERSAI = resp.jsonPath().getFloat(getresponse + ".CERSAI.value");
+		stampDuty = resp.jsonPath().getString(getresponse + ".stampDuty.value");
+		PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath().getString(getresponse + ".standardPartPaymentcharges.value");
+		FORECLOSURE_CHARGES = resp.jsonPath().getString(getresponse + ".standardForeclosureCharges.value");
+		// float CERSAI=resp.jsonPath().getFloat(getresponse+".");
+		noproertiy = resp.jsonPath().getString("data.output.application.noOfProperties");
+		legalTechnicalCharges = resp.jsonPath().getFloat(getresponse + ".legalTechnicalCharges.value");
+		documentCharges = resp.jsonPath().getFloat(getresponse + ".documentCharges.value");
+		 applicationProgramCode = resp.jsonPath().getString(
+		 "data.output.application.applicationProgramCode");
+		 loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+		 
+		//System.out.println(loanAmount);
+		
+		//System.out.println(loanAmount);
+		messageroi = resp.jsonPath().getString(getresponse + ".standardROI.message");
+		
+		resultroi = resp.jsonPath().getBoolean(getresponse + ".standardROI.result");
+		result1stdPrcfee = resp.jsonPath().getBoolean(getresponse + ".standardProcessingFee.result");
+		result2InPenetration = resp.jsonPath().getBoolean(getresponse + ".standardInsurancePenetration.result");
+		resultCERSAI = resp.jsonPath().getBoolean(getresponse + ".CERSAI.result");
+		resultstampDuty = resp.jsonPath().getBoolean(getresponse + ".stampDuty.result");
+		result3prePartPaycharges = resp.jsonPath().getBoolean(getresponse + ".standardPartPaymentcharges.result");
+		result4Forclousurechare = resp.jsonPath().getBoolean(getresponse + ".standardForeclosureCharges.result");
+		result5legalTechnicalCharges = resp.jsonPath().getBoolean(getresponse + ".legalTechnicalCharges.result");
+		result6documentCharges = resp.jsonPath().getBoolean(getresponse + ".documentCharges.result");
+		resultapplicationprogramcode = resp.jsonPath().getBoolean(getresponse + ".applicationProgramCode.result");
+
+		roideviationCode = resp.jsonPath().getString(dev + ".standardROI[0].deviationCode");
+		ProcessFeedeviationCode1 = resp.jsonPath().getString(dev + ".standardProcessingFee[0].deviationCode");
+		InsurancePendeviationCode2 = resp.jsonPath().getString(dev + ".standardInsurancePenetration[0].deviationCode");
+		PrePayChargedeviationCode3 = resp.jsonPath().getString(dev + ".standardPartPaymentcharges[0].deviationCode");
+		ForClosuredeviationCode4 = resp.jsonPath().getString(dev + ".standardForeclosureCharges[0].deviationCode");
+		CERSAIdeviationcode = resp.jsonPath().getString(dev + ".CERSAI[0].deviationCode");
+		legalTechnicalChargesdeviatoncode = resp.jsonPath().getString(dev + ".legalTechnicalCharges[0].deviationCode");
+		documentChargesdeviation = resp.jsonPath().getString(dev + ".documentCharges[0].deviationCode");
+		message1 = resp.jsonPath().getString(dev + ".standardROI.message");
+//		Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+		
+		final_status = resp.jsonPath().getString("data.final_status");
+		final_result = resp.jsonPath().getBoolean("data.final_result");
+		deviation_status = resp.jsonPath().getBoolean("data.deviation_status");
+	}
+
+	/*
+	 * public String readJson(String fileNam) {
+	 * 
+	 * try { return new String(Files.readAllBytes(Paths.get(fileNam))); } catch
+	 * (Exception e) {
+	 * 
+	 * throw new RuntimeException("Error reading json file+"); }}
+	 */
+	public RequestSpecification requestSpecification() throws IOException {
+
+		if (req == null) {
+			PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
+			req = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+					.addFilter(RequestLoggingFilter.logRequestTo(log))
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(ContentType.JSON).build();
+			return req;
+		}
+		return req;
+
+	}
+	/*
+	 * public Response endpoint () throws IOException {
+	 * 
+	 * if (req == null) { //PrintStream log = new PrintStream(new
+	 * FileOutputStream("logging.txt")); req = new
+	 * RequestSpecBuilder().sete(getGlobalValue("endpoint"))
+	 * .addFilter(RequestLoggingFilter.logRequestTo(log))
+	 * .addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(
+	 * ContentType.JSON).build(); return req; } return req;
+	 * 
+	 * }
+	 */
+
+	public static String getGlobalValue(String key) throws IOException {
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream("src\\test\\resourcess\\testdata\\config.properties");
+		prop.load(fis);
+		return prop.getProperty(key);
+
+	}
+
+	public void setCellData(String path, String sheetName, String colName, int rowNum, String data) {
+		try {
+			FileInputStream fis = new FileInputStream(path);
+			XSSFWorkbook workbook = new XSSFWorkbook(fis);
+			int index = workbook.getSheetIndex(sheetName);
+			int colNum = 1;
+
+			XSSFSheet sheet = workbook.getSheetAt(index);////148
+			XSSFRow row = sheet.getRow(0);
+			for (int i = 0; i < row.getLastCellNum(); i++) {
+				if (row.getCell(i).getStringCellValue().trim().equals(colName))
+					colNum = i;
+			}
+			sheet.autoSizeColumn(colNum);
+			row = sheet.getRow(rowNum - 1);
+			if (row == null)
+				row = sheet.createRow(rowNum - 1);
+			XSSFCell cell = row.getCell(colNum);
+			if (cell == null)
+				cell = row.createCell(colNum);
+			cell.setCellValue(data);
+			FileOutputStream fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+			fileOut.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import UtilityClasses.XLUtils;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricingbre;
+import reporter.ExtentListeners;
+
+public class SC001_Verify_the_ROI_for_USL_SANJ_ABB extends baseClass1 {
+	public RequestSpecification res;
+	public Response resp;
+	@Test
+
+	public void TC001() throws JSONException, IOException {
+
+		
+		
+		  String XlSX="C:\\\\Users\\\\Prashant.Singh\\\\eclipse-workspace1\\\\yrestassured_bre\\\\Pricing combintion.xlsx"; 
+			/*
+			 * String Path =
+			 * "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+			 */
+		  String xlFile =
+		  "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing combintion.xlsx"
+		  ;
+		 
+		//String postBody = readJson(Path);
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+		SoftAssert asser = new SoftAssert();
+		for (int i = 1; i <=rowNum; i++) {
+
+			String modifiedJson = pricingbre.payload(XLUtils.getCellData(xlFile, "sheet1", i, 0),
+					XLUtils.getCellData(xlFile, "sheet1", i, 1), XLUtils.getCellData(xlFile, "sheet1", i, 2),
+					XLUtils.getCellData(xlFile, "sheet1", i, 3), XLUtils.getCellData(xlFile, "sheet1", i, 4),XLUtils.getCellData(xlFile, "sheet1", i, 5));
+			// System.out.println(test.toString());
+			res.body(modifiedJson);
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "sheet1", i, 0));
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson);
+			Response resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+			getJsondata( resp);
+			/*
+			 * float ROI = resp.jsonPath().getFloat(getresponse + ".standardROI.value");
+			 * float pRocessingFee = resp.jsonPath().getFloat(getresponse +
+			 * ".standardProcessingFee.value"); float NET_INSURANCE_PENETRATION =
+			 * resp.jsonPath() .getFloat(getresponse +
+			 * ".standardInsurancePenetration.value"); String PRE_OR_PART_PAYMENT_CHARGES =
+			 * resp.jsonPath() .getString(getresponse +
+			 * ".standardPartPaymentcharges.value"); String FORECLOSURE_CHARGES =
+			 * resp.jsonPath().getString(getresponse + ".standardForeclosureCharges.value");
+			 * String message = resp.jsonPath().getString(getresponse +
+			 * ".standardROI.message");
+			 * 
+			 * Boolean result = resp.jsonPath().getBoolean(getresponse +
+			 * ".standardROI.result"); Boolean result1 =
+			 * resp.jsonPath().getBoolean(getresponse + ".standardProcessingFee.result");
+			 * Boolean result2 = resp.jsonPath().getBoolean(getresponse +
+			 * ".standardInsurancePenetration.result"); Boolean result3 =
+			 * resp.jsonPath().getBoolean(getresponse +
+			 * ".standardPartPaymentcharges.result"); Boolean result4 =
+			 * resp.jsonPath().getBoolean(getresponse +
+			 * ".standardForeclosureCharges.result"); String final_status =
+			 * resp.jsonPath().getString("data.final_status"); Boolean final_result =
+			 * resp.jsonPath().getBoolean("data.final_result"); String
+			 * applicationProgramCode = resp.jsonPath().getString(getresponse +
+			 * ".applicationProgramCode.value");
+			 * 
+			 * String deviationCode = resp.jsonPath().getString(dev +
+			 * ".standardROI.deviationCode"); String deviationCode1 =
+			 * resp.jsonPath().getString(dev + ".standardProcessingFee.deviationCode");
+			 * String deviationCode2 = resp.jsonPath().getString(dev +
+			 * ".standardInsurancePenetration.deviationCode"); String deviationCode3 =
+			 * resp.jsonPath().getString(dev + ".standardPartPaymentcharges.deviationCode");
+			 * String deviationCode4 = resp.jsonPath().getString(dev +
+			 * ".standardForeclosureCharges.deviationCode"); String message1 =
+			 * resp.jsonPath().getString(dev + ".standardROI.message");
+			 * Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+			 */
+            
+			if (ROI >= 19) {
+
+				Assert.assertEquals(resultroi, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + resultroi + ",   ROI is  :" + ROI + ",  message  :" + messageroi);
+				setCellData(XlSX,"Sheet1","result",i+1,String.valueOf(resultroi));
+				setCellData(XlSX,"Sheet1","roi",i+1,String.valueOf(ROI));
+				setCellData(XlSX,"Sheet1","message",i+1,String.valueOf(messageroi));
+				//Assert.assertEquals(message, "Standard ROI norm is met");
+			} else if (ROI > 18.50) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(XlSX,"Sheet1","result",i+1,String.valueOf(resultroi));
+				setCellData(XlSX,"Sheet1","roi",i+1,String.valueOf(ROI));
+				setCellData(XlSX,"Sheet1","message",i+1,String.valueOf(message1));
+				setCellData(XlSX,"Sheet1","deviaton code",i+1,String.valueOf(roideviationCode));
+				Assert.assertEquals(roideviationCode, "[DEV-CUST-IRR-0]");
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				Assert.assertEquals(resultroi, false);
+
+			} else if (ROI > 16) {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 18.51 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "  ,message        :" + message1);
+				setCellData(XlSX,"Sheet1","result",i+1,String.valueOf(resultroi));
+				setCellData(XlSX,"Sheet1","roi",i+1,String.valueOf(ROI));
+				setCellData(XlSX,"Sheet1","message",i+1,String.valueOf(message1));
+				setCellData(XlSX,"Sheet1","deviaton code",i+1,String.valueOf(roideviationCode));
+				Assert.assertEquals(roideviationCode, "[DEV-CUST-IRR-0.5]");
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR >=0.5%]");
+				Assert.assertEquals(resultroi, false);
+
+			} else {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "message        :" + message1);
+				setCellData(XlSX,"Sheet1","result",i+1,String.valueOf(resultroi));
+				setCellData(XlSX,"Sheet1","roi",i+1,String.valueOf(ROI));
+				setCellData(XlSX,"Sheet1","message",i+1,String.valueOf(message1));
+				setCellData(XlSX,"Sheet1","deviaton code",i+1,String.valueOf(roideviationCode));
+				Assert.assertEquals(roideviationCode, "[DEV-CUST-IRR-3]");
+				Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				Assert.assertEquals(resultroi, false);
+			}
+			if (pRocessingFee >= 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee + " ,result  :" + result1stdPrcfee);
+				Assert.assertEquals(result1stdPrcfee, true);
+
+			} else if (pRocessingFee < 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee + " ,result  :" + result1stdPrcfee
+						+ ",deviationCode :" + ProcessFeedeviationCode1);
+				Assert.assertEquals(result1stdPrcfee, false);
+				Assert.assertEquals(ProcessFeedeviationCode1, "[DEV-PF-0]");
+				// message pending
+			}
+			if (NET_INSURANCE_PENETRATION >= 1.50) {
+				ExtentListeners.test.log(Status.INFO,
+						"NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION + ",   result  :" + result2InPenetration);
+				Assert.assertEquals(result2InPenetration, true);
+			}
+
+			else if (NET_INSURANCE_PENETRATION < 1.50) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + NET_INSURANCE_PENETRATION + ",  result  :"
+						+ result2InPenetration + ",  deviationCode :" + InsurancePendeviationCode2);
+				Assert.assertEquals(result2InPenetration, false);
+				Assert.assertEquals(InsurancePendeviationCode2, "[DEV-INSPEN-0]");
+				// message pending
+			}
+			if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO,
+						"PRE_OR_PART_PAYMENT_CHARGES  :" + PRE_OR_PART_PAYMENT_CHARGES + ",    result  :" + result3prePartPaycharges);
+				Assert.assertEquals(result3prePartPaycharges, true);
+				// message pending
+			} else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + PRE_OR_PART_PAYMENT_CHARGES + ",  result  :"
+						+ result3prePartPaycharges + ",  deviationCode :" + PrePayChargedeviationCode3);
+				Assert.assertEquals(result3prePartPaycharges, false);
+				Assert.assertEquals(PrePayChargedeviationCode3, "[DEV-PRE-PART]");
+			}
+			if (FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO,
+						"PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES + ", result  :" + result4Forclousurechare);
+				Assert.assertEquals(result4Forclousurechare, true);
+				// message pending
+			} else if (FORECLOSURE_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + FORECLOSURE_CHARGES + ",  result  :"
+						+ result4Forclousurechare + "deviationCode :" + ForClosuredeviationCode4);
+				Assert.assertEquals(result4Forclousurechare, false);
+				Assert.assertEquals(ForClosuredeviationCode4, "[DEV-FORE-CLOSURE]");
+				// message pending
+			}
+
+			if (ROI >= 19 && pRocessingFee >= 2 && NET_INSURANCE_PENETRATION >= 1.50
+					&& PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") && FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO,
+						"final_status :" + final_status + "final_result  :" + final_result);
+				Assert.assertEquals(final_status, "PASS");
+				Assert.assertEquals(final_result, true);
+
+			} else {
+				ExtentListeners.test.log(Status.INFO,
+						"final_status  :" + final_status + "final_result :" + final_result);
+				Assert.assertEquals(final_status, "FAIL");
+				Assert.assertEquals(final_result, false);
+			}
+			asser.assertAll();
+		}
+	}
+}
+/*
+ * private String readJson(String fileNam) {
+ * 
+ * try { return new String(Files.readAllBytes(Paths.get(fileNam))); } catch
+ * (Exception e) {
+ * 
+ * throw new RuntimeException("Error reading json file+"); }
+ * 
+ * } }
+ */
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.json.JSONException;
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import UtilityClasses.XLUtils;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricingbre;
+import reporter.ExtentListeners;
+
+public class SC002_Verify_the_PROCESSING_FEE_for_USL_SANJ_ABB extends baseClass1
+{
+	@Test
+	public void TC002() throws JSONException, IOException {
+
+		RequestSpecification res;
+
+		String Path = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing combintion.xlsx";
+
+		String postBody = readJson(Path);
+		res=given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization", "Bearer tD6tL7BpRIW9vNmvDBgZ");
+	
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+       SoftAssert asser=new SoftAssert();
+		for (int i = 1; i <= 2; i++) {
+
+			String modifiedJson = pricingbre.payload(XLUtils.getCellData(xlFile, "sheet1", i, 0),
+					XLUtils.getCellData(xlFile, "sheet1", i, 1), XLUtils.getCellData(xlFile, "sheet1", i, 2),
+					XLUtils.getCellData(xlFile, "sheet1", i, 3), XLUtils.getCellData(xlFile, "sheet1", i, 4),XLUtils.getCellData(xlFile, "sheet1", i, 5));
+			// System.out.println(test.toString());
+			res.body(modifiedJson);
+			ExtentListeners.test.log(Status.INFO, "TC_Verify PROCESSING_FEE,when PROCESSING_FEE is   :" +XLUtils.getCellData(xlFile, "sheet1", i, 1));
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" +modifiedJson);
+			Response resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();		
+			ExtentListeners.test.log(Status.INFO, "Response is  :" +resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+			float ROI = resp.jsonPath().getFloat(getresponse+".standardROI.value");
+			float pRocessingFee = resp.jsonPath()
+					.getFloat(getresponse+".standardProcessingFee.value");
+			float NET_INSURANCE_PENETRATION = resp.jsonPath()
+					.getFloat(getresponse+".standardInsurancePenetration.value");
+			String PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath()
+					.getString(getresponse+".standardPartPaymentcharges.value");
+			String FORECLOSURE_CHARGES = resp.jsonPath()
+					.getString(getresponse+".standardForeclosureCharges.value");
+			String message = resp.jsonPath().getString(getresponse+".standardROI.message");
+
+			Boolean result = resp.jsonPath().getBoolean(getresponse+".standardROI.result");
+			Boolean result1 = resp.jsonPath()
+					.getBoolean(getresponse+".standardProcessingFee.result");
+			Boolean result2 = resp.jsonPath()
+					.getBoolean(getresponse+".standardInsurancePenetration.result");
+			Boolean result3 = resp.jsonPath()
+					.getBoolean(getresponse+".standardPartPaymentcharges.result");
+			Boolean result4 = resp.jsonPath()
+					.getBoolean(getresponse+".standardForeclosureCharges.result");
+			String final_status = resp.jsonPath().getString("data.final_status");
+			Boolean final_result = resp.jsonPath().getBoolean("data.final_result");
+			String applicationProgramCode = resp.jsonPath()
+					.getString(getresponse+".applicationProgramCode.value");
+
+			String deviationCode = resp.jsonPath().getString(dev+".standardROI.deviationCode");
+			String deviationCode1 = resp.jsonPath()
+					.getString(dev+".standardProcessingFee.deviationCode");
+			String deviationCode2 = resp.jsonPath()
+					.getString(dev+".standardInsurancePenetration.deviationCode");
+			String deviationCode3 = resp.jsonPath()
+					.getString(dev+".standardPartPaymentcharges.deviationCode");
+			String deviationCode4 = resp.jsonPath()
+					.getString(dev+".standardForeclosureCharges.deviationCode");
+			String message1 = resp.jsonPath().getString(dev+".standardROI.message");
+			Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+
+			if (ROI >= 19) {
+			
+				Assert.assertEquals(result, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + result + ",   ROI is  :" + ROI + ",  message  :" + message);
+
+				Assert.assertEquals(message, "Standard ROI norm is met");
+			} else if (ROI > 18.50) {
+				
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :"+ROI+" ,Result       :" + result+"  ,deviationCode :" + deviationCode+" ,message       :" + message1);	
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0]");				
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");				
+				Assert.assertEquals(result, false);
+				
+			} else if (ROI > 16.01) {
+				
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 18.51 :"+ROI+" ,result        :" + result+"  ,deviationCode  :" + deviationCode+"  ,message        :" + message1);
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0.5]");			
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR >=0.5%]");
+				Assert.assertEquals(result, false);
+				
+			} else {
+				
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :"+ROI+" ,result        :" + result+"  ,deviationCode  :" + deviationCode+"message        :" + message1);
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-3]");				
+				Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				Assert.assertEquals(result, false);	
+			}
+			if (pRocessingFee >= 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee+" ,result  :" + result1);
+				Assert.assertEquals(result1, true);
+				
+			} else if (pRocessingFee < 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee+" ,result  :" + result1+",deviationCode :" + deviationCode1);
+				Assert.assertEquals(result1, false);
+				Assert.assertEquals(deviationCode, "[DEV-PF-0]");
+				// message pending
+			}
+			if (NET_INSURANCE_PENETRATION >= 1.50) {
+				ExtentListeners.test.log(Status.INFO, "NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION+",   result  :" + result2);
+				Assert.assertEquals(result2, true);			
+			}
+
+			else if (NET_INSURANCE_PENETRATION < 1.50) {
+				
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + NET_INSURANCE_PENETRATION+",  result  :" + result2+",  deviationCode :" + deviationCode2);
+				Assert.assertEquals(result2, false);				
+				Assert.assertEquals(deviationCode2, "[DEV-INSPEN-0]");
+				// message pending
+			}
+			if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + PRE_OR_PART_PAYMENT_CHARGES+",    result  :" + result3);
+				Assert.assertEquals(result3, true);
+				// message pending
+			} else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + PRE_OR_PART_PAYMENT_CHARGES+",  result  :" + result3+",  deviationCode :" + deviationCode3);
+				Assert.assertEquals(result3, false);		
+				Assert.assertEquals(deviationCode3, "[DEV-PRE-PART]");
+			}
+			if (FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES+", result  :" + result4);
+				Assert.assertEquals(result4, true);
+				// message pending
+			} else if (FORECLOSURE_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + FORECLOSURE_CHARGES+",  result  :" + result4+"deviationCode :" + deviationCode4);
+				Assert.assertEquals(result4, false);				
+				Assert.assertEquals(deviationCode4, "[DEV-FORE-CLOSURE]");
+				// message pending
+			}
+
+			if (ROI >= 19 && pRocessingFee >= 2 && NET_INSURANCE_PENETRATION >= 1.50
+					&& PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") && FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "final_status :" + final_status+"final_result  :" + final_result);
+				Assert.assertEquals(final_status, "PASS");			
+				Assert.assertEquals(final_result, true);
+
+			} else {
+				ExtentListeners.test.log(Status.INFO, "final_status  :" + final_status+"final_result :" + final_result);
+				Assert.assertEquals(final_status, "FAIL");				
+				Assert.assertEquals(final_result, false);
+			}
+//			asser.assertAll();
+		}
+	}
+
+	
+	  private String readJson(String fileNam) {
+	  
+	  try { return new String(Files.readAllBytes(Paths.get(fileNam))); } catch
+	  (Exception e) {
+	  
+	  throw new RuntimeException("Error reading json file+"); }
+	  
+	  }
+	 
+}	
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.json.JSONException;
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import UtilityClasses.XLUtils;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricingbre;
+import reporter.ExtentListeners;
+
+public class SC003_Verify_the_PRE_OR_PART_PAYMENT_CHARGES_for_USL_SANJ_ABB extends baseClass1 
+{
+@Test	
+	
+	public void TC002() throws JSONException, IOException {
+
+		RequestSpecification res;
+
+		String Path = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing combintion.xlsx";
+
+		String postBody = readJson(Path);
+		res=given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization", "Bearer tD6tL7BpRIW9vNmvDBgZ");
+	
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+       SoftAssert asser=new SoftAssert();
+		for (int i = 1; i <= 2; i++) {
+
+			String modifiedJson = pricingbre.payload(XLUtils.getCellData(xlFile, "sheet1", i, 0),
+					XLUtils.getCellData(xlFile, "sheet1", i, 1), XLUtils.getCellData(xlFile, "sheet1", i, 2),
+					XLUtils.getCellData(xlFile, "sheet1", i, 3), XLUtils.getCellData(xlFile, "sheet1", i, 4),XLUtils.getCellData(xlFile, "sheet1", i, 5));
+			// System.out.println(test.toString());
+			res.body(modifiedJson);
+			ExtentListeners.test.log(Status.INFO, "Verify PRE_OR_PART_PAYMENT_CHARGES,when PRE_OR_PART_PAYMENT_CHARGES is   :" +XLUtils.getCellData(xlFile, "sheet1", i, 2));
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" +modifiedJson);
+			Response resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();		
+			ExtentListeners.test.log(Status.INFO, "Response is  :" +resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+			float ROI = resp.jsonPath().getFloat(getresponse+".standardROI.value");
+			float pRocessingFee = resp.jsonPath()
+					.getFloat(getresponse+".standardProcessingFee.value");
+			float NET_INSURANCE_PENETRATION = resp.jsonPath()
+					.getFloat(getresponse+".standardInsurancePenetration.value");
+			String PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath()
+					.getString(getresponse+".standardPartPaymentcharges.value");
+			String FORECLOSURE_CHARGES = resp.jsonPath()
+					.getString(getresponse+".standardForeclosureCharges.value");
+			String message = resp.jsonPath().getString(getresponse+".standardROI.message");
+
+			Boolean result = resp.jsonPath().getBoolean(getresponse+".standardROI.result");
+			Boolean result1 = resp.jsonPath()
+					.getBoolean(getresponse+".standardProcessingFee.result");
+			Boolean result2 = resp.jsonPath()
+					.getBoolean(getresponse+".standardInsurancePenetration.result");
+			Boolean result3 = resp.jsonPath()
+					.getBoolean(getresponse+".standardPartPaymentcharges.result");
+			Boolean result4 = resp.jsonPath()
+					.getBoolean(getresponse+".standardForeclosureCharges.result");
+			String final_status = resp.jsonPath().getString("data.final_status");
+			Boolean final_result = resp.jsonPath().getBoolean("data.final_result");
+			String applicationProgramCode = resp.jsonPath()
+					.getString(getresponse+".applicationProgramCode.value");
+
+			String deviationCode = resp.jsonPath().getString(dev+".standardROI.deviationCode");
+			String deviationCode1 = resp.jsonPath()
+					.getString(dev+".standardProcessingFee.deviationCode");
+			String deviationCode2 = resp.jsonPath()
+					.getString(dev+".standardInsurancePenetration.deviationCode");
+			String deviationCode3 = resp.jsonPath()
+					.getString(dev+".standardPartPaymentcharges.deviationCode");
+			String deviationCode4 = resp.jsonPath()
+					.getString(dev+".standardForeclosureCharges.deviationCode");
+			String message1 = resp.jsonPath().getString(dev+".standardROI.message");
+			Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+
+			if (ROI >= 19) {
+			
+				Assert.assertEquals(result, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + result + ",   ROI is  :" + ROI + ",  message  :" + message);
+
+				Assert.assertEquals(message, "Standard ROI norm is met");
+			} else if (ROI > 18.50) {
+				
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :"+ROI+" ,Result       :" + result+"  ,deviationCode :" + deviationCode+" ,message       :" + message1);	
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0]");				
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");				
+				Assert.assertEquals(result, false);
+				
+			} else if (ROI > 16.01) {
+				
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 18.51 :"+ROI+" ,result        :" + result+"  ,deviationCode  :" + deviationCode+"  ,message        :" + message1);
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-0.5]");			
+				Assert.assertEquals(message1, "[Commerical Norms-Customer IRR >=0.5%]");
+				Assert.assertEquals(result, false);
+				
+			} else {
+				
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :"+ROI+" ,result        :" + result+"  ,deviationCode  :" + deviationCode+"message        :" + message1);
+				Assert.assertEquals(deviationCode, "[DEV-CUST-IRR-3]");				
+				Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				Assert.assertEquals(result, false);	
+			}
+			if (pRocessingFee >= 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee+" ,result  :" + result1);
+				Assert.assertEquals(result1, true);
+				
+			} else if (pRocessingFee < 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee+" ,result  :" + result1+",deviationCode :" + deviationCode1);
+				Assert.assertEquals(result1, false);
+				Assert.assertEquals(deviationCode, "[DEV-PF-0]");
+				// message pending
+			}
+			if (NET_INSURANCE_PENETRATION >= 1.50) {
+				ExtentListeners.test.log(Status.INFO, "NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION+",   result  :" + result2);
+				Assert.assertEquals(result2, true);			
+			}
+
+			else if (NET_INSURANCE_PENETRATION < 1.50) {
+				
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + NET_INSURANCE_PENETRATION+",  result  :" + result2+",  deviationCode :" + deviationCode2);
+				Assert.assertEquals(result2, false);				
+				Assert.assertEquals(deviationCode2, "[DEV-INSPEN-0]");
+				// message pending
+			}
+			if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + PRE_OR_PART_PAYMENT_CHARGES+",    result  :" + result3);
+				Assert.assertEquals(result3, true);
+				// message pending
+			} else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + PRE_OR_PART_PAYMENT_CHARGES+",  result  :" + result3+",  deviationCode :" + deviationCode3);
+				Assert.assertEquals(result3, false);		
+				Assert.assertEquals(deviationCode3, "[DEV-PRE-PART]");
+			}
+			if (FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES+", result  :" + result4);
+				Assert.assertEquals(result4, true);
+				// message pending
+			} else if (FORECLOSURE_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + FORECLOSURE_CHARGES+",  result  :" + result4+"deviationCode :" + deviationCode4);
+				Assert.assertEquals(result4, false);				
+				Assert.assertEquals(deviationCode4, "[DEV-FORE-CLOSURE]");
+				// message pending
+			}
+
+			if (ROI >= 19 && pRocessingFee >= 2 && NET_INSURANCE_PENETRATION >= 1.50
+					&& PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") && FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "final_status :" + final_status+"final_result  :" + final_result);
+				Assert.assertEquals(final_status, "PASS");			
+				Assert.assertEquals(final_result, true);
+
+			} else {
+				ExtentListeners.test.log(Status.INFO, "final_status  :" + final_status+"final_result :" + final_result);
+				Assert.assertEquals(final_status, "FAIL");				
+				Assert.assertEquals(final_result, false);
+			}
+//			asser.assertAll();
+		}
+	}
+
+	
+	  private String readJson(String fileNam) {
+	  
+	  try { return new String(Files.readAllBytes(Paths.get(fileNam))); } catch
+	  (Exception e) {
+	  
+	  throw new RuntimeException("Error reading json file+"); }
+	  
+	  }
+	 
+
+	
+	
+	
+	}
+-----------------------------------------------------------------------------------------------------------------------
+Pricing_Bre.sl_gm_shakti_secured_banking
+
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+
+
+
+import static io.restassured.RestAssured.given;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import functions.Insurance_Penetrat;
+import functions.ROI_method;
+import functions.cersai_master;
+import functions.documentation_Charges;
+import functions.foreclosure_charge;
+import functions.legal_Technical_Charges;
+import functions.pre_part_charge;
+import functions.processingFee;
+import functions.stamp_dutity;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import payload.test2_payload;
+import reporter.ExtentListeners;
+
+public class data_provider extends baseClass1 {
+	RequestSpecification res;
+	Response resp;
+	@DataProvider(name = "testdata")
+	public static Object[][] excelDataReader() throws IOException {
+		String path = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\test2_payload_data_xlsx.xlsx";
+		String excelsheet = "Sheet1";
+		FileInputStream fis = new FileInputStream(path);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheet(excelsheet);
+		XSSFRow row = sheet.getRow(0);
+		int noOfRows = sheet.getPhysicalNumberOfRows();
+		int noOfCols = row.getPhysicalNumberOfCells();
+		Object data[][] = new Object[noOfRows - 1][noOfCols];
+		for (int i = 1; i < 25; i++) {
+			for (int j = 0; j < 12; j++) {
+				Object cellData = null;
+				if (sheet.getRow(i).getCell(j).getCellType() == CellType.NUMERIC) {
+					cellData = sheet.getRow(i).getCell(j).getNumericCellValue();
+				} else if (sheet.getRow(i).getCell(j).getCellType() == CellType.STRING) {
+					cellData = sheet.getRow(i).getCell(j).getStringCellValue();
+				}
+
+				data[i - 1][j] = cellData;
+// System.out.println("Data "+data[i-1][j]);
+			}
+			System.out.println();
+		}
+// workbook.close();
+//		System.out.println(data);
+		return data;
+	}
+
+	@Test(dataProvider = "testdata")
+	public void demoClass(Object Scenario_no,Object ROI, Object Loan_amount, Object Processing_Fees, Object Insurance_Penetrat,
+			Object CERSAI_master, Object Stamp_dutity, Object Pre_Part, Object Foreclosure, Object NO_OF_PROPERTIES,
+			Object Legal_Technical_Charges, Object Documentation_Charges) throws IOException {
+		/* System.out.println("ROI :" + Float.valueOf(ROI.toString())); */
+//		System.out.println("Loan_amount :" + Loan_amount);
+//		System.out.println("Processing_Fees :" + Processing_Fees);
+//		System.out.println("Insurance_Penetrat :" + Insurance_Penetrat);
+//		System.out.println("CERSAI_master :" + CERSAI_master);
+//		System.out.println("Stamp_dutity :" + Stamp_dutity);
+//		System.out.println("Pre_Part :" + Pre_Part);
+//		System.out.println("Foreclosure :" + Foreclosure);
+//		System.out.println("NO_OF_PROPERTIES :" + NO_OF_PROPERTIES);
+//		System.out.println("Legal_Technical_Charges :" + Legal_Technical_Charges);
+//		System.out.println("Documentation_Charges :" + Documentation_Charges);
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\new_test_data.xlsx";
+
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		System.out.println("Total row is :" + rowNum);
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+		System.out.println("Total Col is :" + colNum);
+		//SoftAssert asser = new SoftAssert();
+
+		/*
+		 * ROI_method obj = new ROI_method(); processingFee obj1=new processingFee();
+		 * Insurance_Penetrat obj2=new Insurance_Penetrat(); cersai_master obj3=new
+		 * cersai_master(); stamp_dutity obj4=new stamp_dutity(); pre_part_charge
+		 * obj5=new pre_part_charge(); foreclosure_charge obj6=new foreclosure_charge();
+		 * legal_Technical_Charges obj7= new legal_Technical_Charges();
+		 * documentation_Charges obj8=new documentation_Charges();
+		 */
+		 String modifiedJson1 = test2_payload.payload2(ROI,Loan_amount,Processing_Fees,Insurance_Penetrat,CERSAI_master,Stamp_dutity,Foreclosure,
+				 NO_OF_PROPERTIES,Legal_Technical_Charges,Documentation_Charges);
+		 res.body(modifiedJson1);
+
+			//ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson1);
+			resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();
+			//ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+		 Boolean success = resp.jsonPath().get("success");
+			System.out.println(success);
+			Assert.assertEquals(success, true);
+			int statuscode = resp.getStatusCode();
+			System.out.println(statuscode);
+			Assert.assertEquals(statuscode, 200);
+			
+		
+	}
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+
+import UtilityClasses.ReadConfig;
+
+public class derdf {
+
+	public static void main(String[] args) {
+	ReadConfig obj = new ReadConfig();
+		
+		
+		System.out.println(obj.getToken());
+	//	String path = System.getProperty("user.dir" + "/src/test/java/com/demoBankingV1/testData/LoginData.xlsx");
+		String path1 = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\prashant.new.data.xlsx";
+		String path = System.getProperty("user.dir"+"\\\\src\\\\test\\\\resourcess\\\\testdata\\\\prashant.new.data.xlsx");
+	System.out.println(path);
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+ 
+import static io.restassured.RestAssured.given;
+ 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+ 
+import org.junit.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+ 
+import com.aventstack.extentreports.Status;
+ 
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import functions.Insurance_Penetrat;
+import functions.ROI_method;
+import functions.processingFee;
+import groovyjarjarantlr4.v4.parse.ANTLRParser.parserRule_return;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import payload.pricingbre;
+import payload.test;
+import reporter.ExtentListeners;
+ 
+public class prashant extends baseClass1 {
+	
+	  //public float loanAmount; 
+	   Response resp;
+	 
+	 RequestSpecification res;
+ 
+	@Test
+	public void Verify_roi_shakti_banking() throws IOException {
+//
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\prashant.new.data.xlsx";//read excel
+		//String write = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\11_03_2024_test_data.xlsx";//write the excel
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+ 
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		System.out.println("Total row is :" + rowNum);
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+		System.out.println("Total Col is :" + colNum);
+		SoftAssert asser = new SoftAssert();
+ 
+		ROI_method obj = new ROI_method();
+		/*
+		 * processingFee obj1=new processingFee(); Insurance_Penetrat obj2=new
+		 * Insurance_Penetrat();
+		 */
+		for (int i = 1; i <= 4; i++) {
+ 
+			String modifiedJson1 = pricing_bre_sl_shakti_banking.payload1(XLUtils.getCellData(xlFile, "Sheet1", i, 1),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 2), XLUtils.getCellData(xlFile, "Sheet1", i, 3),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 4), XLUtils.getCellData(xlFile, "Sheet1", i, 5),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 6), XLUtils.getCellData(xlFile, "Sheet1", i, 7),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 8), XLUtils.getCellData(xlFile, "Sheet1", i, 9),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 10), XLUtils.getCellData(xlFile, "Sheet1", i, 11));
+ 
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "Sheet1", i, 0));
+			ExtentListeners.test.log(Status.INFO, XLUtils.getCellData(xlFile, "Sheet1", i, 1));
+			//String noproertiy = (XLUtils.getCellData(xlFile, "Sheet1", i, 8));
+			/*
+			 * //setCellData(xlFile, "Sheet1", "Expected roi", i + 1,
+			 * String.valueOf(XLUtils.getCellData(xlFile, "Sheet1", i, 0)));
+			 */
+			res.body(modifiedJson1);
+ 
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson1);
+			resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+ 
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+			//Assert.assertEquals(applicationProgramCode, "SL-GROMIC-SHAKTI-BANK");
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+ 
+			getJsondata(resp);		
+			obj.getVerifyROI(ROI, resultroi,roideviationCode,loanAmount, i, xlFile);
+			/*
+			 * obj1.getVerifyPF(pRocessingFee, result1stdPrcfee, ProcessFeedeviationCode1,
+			 * i, xlFile, write);
+			 * obj2.getVerifyInsurancePentration(NET_INSURANCE_PENETRATION,
+			 * result2InPenetration, InsurancePendeviationCode2, i, xlFile, write);
+			 */
+ 
+		}}}
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.ReadConfig;
+import UtilityClasses.XLUtils;
+import functions.Final_status;
+import functions.Insurance_Penetrat;
+import functions.ROI_method;
+import functions.cersai_master;
+import functions.documentation_Charges;
+import functions.foreclosure_charge;
+import functions.legal_Technical_Charges;
+import functions.pre_part_charge;
+import functions.processingFee;
+import functions.stamp_dutity;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import pojoMapper.readPojo;
+import reporter.ExtentListeners;
+
+public class shakti_Banking extends baseClass1 {
+	RequestSpecification res;
+	Response resp;
+	ReadConfig readConfig = new ReadConfig();
+
+	@Test
+	public void Shakti_banking() throws IOException {
+			//TODO Externalize this file
+	//	System.getProperty("user.dir"+"\\\\src\\\\test\\\\resourcess\\\\testdata\\\\prashant.new.data.xlsx");
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\prashant.new.data.xlsx";
+		//Headers constants
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization", readConfig.getToken());
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet1");
+		System.out.println("Total row is :" + rowNum);
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet1", rowNum);
+		System.out.println("Total Col is :" + colNum);
+		SoftAssert asser = new SoftAssert();
+
+		ROI_method obj = new ROI_method();
+		processingFee obj1=new processingFee();
+		Insurance_Penetrat obj2=new Insurance_Penetrat(); 
+		 cersai_master obj3=new cersai_master();
+		 stamp_dutity obj4=new stamp_dutity();
+		 pre_part_charge obj5=new pre_part_charge();
+		 foreclosure_charge obj6=new foreclosure_charge();
+		 legal_Technical_Charges obj7= new legal_Technical_Charges();
+		 documentation_Charges obj8=new documentation_Charges();
+		 Final_status obj9= new Final_status();
+		for (int i = 1; i <= 24; i++) {
+			//TODO make the sheet1 as constant.
+			String requestPayload = pricing_bre_sl_shakti_banking.payload1(XLUtils.getCellData(xlFile, "Sheet1", i, 1),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 2), XLUtils.getCellData(xlFile, "Sheet1", i, 3),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 4), XLUtils.getCellData(xlFile, "Sheet1", i, 5),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 6), XLUtils.getCellData(xlFile, "Sheet1", i, 7),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 8), XLUtils.getCellData(xlFile, "Sheet1", i, 9),
+					XLUtils.getCellData(xlFile, "Sheet1", i, 10), XLUtils.getCellData(xlFile, "Sheet1", i, 11));
+
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "Sheet1", i, 0));
+			ExtentListeners.test.log(Status.INFO, XLUtils.getCellData(xlFile, "Sheet1", i, 1));			
+			res.body(requestPayload);
+
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + requestPayload);
+			//TODO Externalize the endpoint in configuration
+			resp = res.request(Method.POST, readConfig.getEndPoint());
+			String resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			//TODO Use Hamcrest Matchers
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+			//TODO user java bean to populate the json response and then assert.
+			getJsondata(resp);
+			Assert.assertEquals(applicationProgramCode, "SL-GROMIC-SHAKTI-BANK");
+			obj.getVerifyROI(ROI, resultroi, roideviationCode,loanAmount, i, xlFile);
+			obj1.getVerifySheet1(pRocessingFee,  result1stdPrcfee,  ProcessFeedeviationCode1,  i, xlFile);
+			obj2.getVerifyInsurancePentration(NET_INSURANCE_PENETRATION, result2InPenetration, InsurancePendeviationCode2, i, xlFile);
+			obj3.getVeriy_Cersai(CERSAI, resultCERSAI, CERSAIdeviationcode,i, xlFile);
+			obj4.getVerifystapdutiy(stampDuty, resultstampDuty ,i, xlFile);
+			obj5.getVerifyPrePart( PRE_OR_PART_PAYMENT_CHARGES, result3prePartPaycharges, PrePayChargedeviationCode3,i, xlFile);
+			obj6.getVerifyForclosure( FORECLOSURE_CHARGES, result4Forclousurechare, ForClosuredeviationCode4, i, xlFile);
+			obj7.getVerifylegal_technical_charges( legalTechnicalCharges, result5legalTechnicalCharges, legalTechnicalChargesdeviatoncode,  i,  xlFile);
+			obj8.getVerifyDocumentcharges(documentCharges, result6documentCharges, documentChargesdeviation,  i,  xlFile);
+			obj9.getVerify_final_status( final_status,  i,  xlFile);
+			
+			
+			if (ROI >= 23 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				asser.assertEquals(resultroi, true);				
+				setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				} 
+			else if (ROI >= 22 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				asser.assertEquals(roideviationCode, "DEV-MISHA-CUST0TO60-IRR-1");
+				asser.assertEquals(resultroi, false);
+
+			} else if (ROI >= 0 && ROI <= 21.99 && loanAmount >= 200000 && loanAmount <= 600000) {
+				
+				//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				asser.assertEquals(roideviationCode, "DEV-MISHA-CUST0TO60-IRR-0");
+				asser.assertEquals(resultroi, false);
+
+			} else if (ROI >= 23 && loanAmount < 200000) {
+
+				//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				asser.assertEquals(resultroi, true);
+				//asser.assertEquals(loanAmount, 200000);// dicuss with arsad
+			} else if (ROI >= 22 && loanAmount < 200000) 
+			{
+				//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				asser.assertEquals(roideviationCode, "DEV-MISHA-CUST0TO60-IRR-1");
+				asser.assertEquals(resultroi, false);
+				//asser.assertEquals(loanAmount, 200000);
+			} else if (ROI <= 21.99 && loanAmount < 200000) 
+			{
+				//setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI));
+				asser.assertEquals(roideviationCode, "DEV-MISHA-CUST0TO60-IRR-0");
+				asser.assertEquals(resultroi, false);
+				//asser.assertEquals(loanAmount, 200000);
+			} 
+			  if (ROI >= 22 && loanAmount >= 600001 && loanAmount <= 1000000) {
+			  
+			  asser.assertEquals(resultroi, true); 
+			   
+			  //setCellData(xlFile, "Sheet1", "Actual roi", i + 1, String.valueOf(ROI)); //
+			 // ;
+			  
+			  } 
+			  else if (ROI >= 21.01 && loanAmount >= 600001 && loanAmount <= 1000000) { 
+			   setCellData(xlFile, "Sheet1", "Actual roi", i +
+			  1, String.valueOf(ROI)); 
+			  
+			  setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1,
+			  String.valueOf(roideviationCode)); 
+			  asser.assertEquals(roideviationCode,
+			  "DEV-MISHA-CUST60TO10-IRR-0"); 
+			   } 
+			  else if (ROI >= 0 && ROI <= 20.99 && loanAmount >= 600001 &&
+			  loanAmount <= 1000000) {
+			  setCellData(xlFile, "Sheet1", "Actual roi", i +
+			  1, String.valueOf(ROI));
+			  setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1,
+			  String.valueOf(roideviationCode)); 
+			  asser.assertEquals(roideviationCode,
+			  "DEV-MISHA-CUST60TO10-IRR-1");  } 
+			  
+			  else if (ROI >= 22 && loanAmount > 1000000) {
+			   
+			  setCellData(xlFile, "Sheet1", "Actual roi", i +
+			  1, String.valueOf(ROI));
+			  
+			  setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, 
+			  String.valueOf(roideviationCode)); 
+			   asser.assertEquals(roideviationCode,
+			  "[DEV-MISHA-CUST0TO60-IRR-0]"); 
+			  asser.assertEquals(loanAmount,1000000); 
+			  asser.assertEquals(resultroi, true); } 
+			  
+			  else if (ROI >= 21.01 &&
+			  loanAmount > 1000000) { 
+			  setCellData(xlFile, "Sheet1", "Actual roi", i +
+			  1, String.valueOf(ROI));  
+			   setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1,
+			  String.valueOf(roideviationCode)); 
+			   asser.assertEquals(roideviationCode,
+			  "DEV-MISHA-CUST60TO10-IRR-0");
+			  asser.assertEquals(loanAmount,
+			  1000000);
+			  asser.assertEquals(resultroi, false); }
+			  
+			  else if (ROI <= 20.99 && loanAmount > 1000000) {
+			  setCellData(xlFile, "Sheet1", "Actual roi", i +
+			  1, String.valueOf(ROI));
+			  
+			   setCellData(xlFile, "Sheet1", "Actual deviation code", i + 1, 
+			  String.valueOf(roideviationCode)); 
+			   asser.assertEquals(roideviationCode,
+			  "DEV-MISHA-CUST60TO10-IRR-1");   
+			   asser.assertEquals(loanAmount,
+			  1000000);}
+			   // discuss asser.assertEquals(resultroi, false); }
+			  
+				
+				
+				/*
+				 * else { setCellData(xlFile, "Sheet1", "Actual roi", i + 1,
+				 * String.valueOf("Invalid input")); }
+				 */
+				 
+				 
+			  
+			  if (pRocessingFee >= 2.0) {
+			  
+			  setCellData(xlFile, "Sheet1", "Actual PF", i + 1,
+			  String.valueOf(pRocessingFee)); 
+			  asser.assertEquals(result1stdPrcfee, true);
+			  
+			  } 
+			  else if (pRocessingFee >= 0 && pRocessingFee < 2.0) {
+			  
+			  setCellData(xlFile, "Sheet1", "Actual PF", i + 1,
+			  String.valueOf(pRocessingFee)); 
+			  asser.assertEquals(result1stdPrcfee, false);
+			  setCellData(xlFile, "Sheet1", "Actual PFdeviation code", i + 1,
+					  String.valueOf(ProcessFeedeviationCode1));
+			  asser.assertEquals(ProcessFeedeviationCode1, "DEV-MICRO-PF-0"); 
+			  // messagepending
+			   }
+			  else 
+			  {
+				  //setCellData(xlFile, "Sheet1", "Actual PF", i + 1,
+						//  String.valueOf("invalid data"));  
+			  }
+			  if (NET_INSURANCE_PENETRATION >= 3) 
+			  { setCellData(xlFile, "Sheet1",
+			  "Actual Insurance Penetart", i + 1,
+			  String.valueOf(NET_INSURANCE_PENETRATION));
+			  asser.assertEquals(result2InPenetration, true); }
+			  
+			  else if (NET_INSURANCE_PENETRATION >= 0 && NET_INSURANCE_PENETRATION < 3) {
+			  
+			  //setCellData(xlFile, "Sheet1", "Actual Insurance Penetart", i + 1,
+			  String.valueOf(NET_INSURANCE_PENETRATION));
+			  asser.assertEquals(result2InPenetration, false);
+			  setCellData(xlFile, "Sheet1", "Actual Insurance Penetrat deviation code", i + 1,
+					  String.valueOf(InsurancePendeviationCode2));
+			  asser.assertEquals(InsurancePendeviationCode2, "DEV-MICRO-INSPEN-0"); 
+			  //message pending
+			   }
+			  else {
+				  setCellData(xlFile, "Sheet1",
+						  "Actual Insurance Penetart", i + 1,
+						  String.valueOf("invalid insurance penatrate"));
+			  }
+			  
+			  if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) 
+			  { setCellData(xlFile,
+			  "Sheet1", "ActualPre Part", i + 1,
+			  String.valueOf(PRE_OR_PART_PAYMENT_CHARGES));
+			  asser.assertEquals(result3prePartPaycharges, true);} // message pending } 
+			  
+			  else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) 
+			  { setCellData(xlFile,
+			  "Sheet1", "ActualPre Part", i + 1,
+			  String.valueOf(PRE_OR_PART_PAYMENT_CHARGES));
+			  asser.assertEquals(result3prePartPaycharges, false);
+			  setCellData(xlFile,
+					  "Sheet1", "Actual Pre Part deviation code", i + 1,
+					  String.valueOf(PrePayChargedeviationCode3));
+			  asser.assertEquals(PrePayChargedeviationCode3, "[DEV-MICRO-PRE-PART]"); }
+			  else
+			  {
+				  setCellData(xlFile,
+						  "Sheet1", "ActualPre Part", i + 1,
+						  String.valueOf("Invalid Pre payment charges")); 
+			  }
+			  if(FORECLOSURE_CHARGES.contains("Yes"))
+			  
+			  { setCellData(xlFile, "Sheet1",
+			  "Actual Foreclosure", i + 1, String.valueOf(FORECLOSURE_CHARGES));
+			  Assert.assertEquals(result4Forclousurechare, true);   } 
+			  else if (FORECLOSURE_CHARGES.contains("No")) 
+			  { setCellData(xlFile, "Sheet1",
+			  "Actual Foreclosure", i + 1, String.valueOf(FORECLOSURE_CHARGES));
+			  Assert.assertEquals(result4Forclousurechare, false);
+			  setCellData(xlFile, "Sheet1",
+					  "Actual Foreclosure deviation code", i + 1, String.valueOf(ForClosuredeviationCode4));
+			  Assert.assertEquals(ForClosuredeviationCode4, "DEV-MICRO-FORE-CLOSURE"); 
+			  
+			   } 
+			  else {
+				  setCellData(xlFile, "Sheet1",
+						  "Actual Foreclosure", i + 1, String.valueOf("invalid forclousre charges"));
+			  }
+			  if (CERSAI >= 500) 
+			  { setCellData(xlFile, "Sheet1",
+			  "Actual CERSAI", i + 1, String.valueOf(CERSAI));
+			  asser.assertEquals(resultCERSAI, true); } 
+			  else 
+			  { setCellData(xlFile,
+			  "Sheet1", "Actual CERSAI", i + 1, String.valueOf(CERSAI));
+			  asser.assertEquals(resultCERSAI, false);
+			  setCellData(xlFile,
+					  "Sheet1", "Actual CERSAI deviation code", i + 1, String.valueOf(CERSAIdeviationcode));
+					  asser.assertEquals(resultCERSAI, false);
+			  asser.assertEquals(CERSAIdeviationcode, "DEV-MICRO-CERSAI-0"); } 
+			  
+			  if(stampDuty.contains("Yes"))			   
+			  {
+			  
+			  setCellData(xlFile, "Sheet1", "Actual Stamp dutity", i + 1,
+			  String.valueOf(stampDuty)); 
+			  asser.assertEquals(resultstampDuty, true); }
+			  else {
+				  setCellData(xlFile, "Sheet1", "Actual Stamp dutity", i + 1,
+						  String.valueOf("invalid stamp duty"));
+			  }
+			  //else condition is pending 
+			  if (legalTechnicalCharges < 5000 &&
+			  legalTechnicalCharges >= 3000 && noproertiy.contains("1")) {
+			  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges", i + 1,
+			  String.valueOf(legalTechnicalCharges));
+			  asser.assertEquals(result5legalTechnicalCharges, true); } 
+			  else if(legalTechnicalCharges < 3000 && noproertiy.contains("1")){
+			  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges", i + 1,
+			  String.valueOf(legalTechnicalCharges));
+			  asser.assertEquals(result5legalTechnicalCharges, false);
+			  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges deviation code", i + 1,
+					  String.valueOf(legalTechnicalChargesdeviatoncode));
+			  asser.assertEquals(legalTechnicalChargesdeviatoncode,
+			  "DEV-MICRO-LEG-TECH-PRO1-0"); }
+			  else if( noproertiy.contains("0")){
+				  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges", i + 1,
+				  String.valueOf("noproertiy !=0"));
+				  asser.assertEquals(result5legalTechnicalCharges, false);
+				  //setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges deviation code", i + 1,
+						  //String.valueOf(legalTechnicalChargesdeviatoncode));
+					/*
+					 * asser.assertEquals(legalTechnicalChargesdeviatoncode,
+					 * "DEV-MICRO-LEG-TECH-PRO1-0");
+					 */ }
+			  //condition pednding else if
+			  
+			  if (legalTechnicalCharges >= 5000 && noproertiy.contains("2")) 
+				  // noproertiy2only
+			   { setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges", i +
+			  1, String.valueOf(legalTechnicalCharges));
+			  asser.assertEquals(result5legalTechnicalCharges, true); } 
+			  else if(legalTechnicalCharges < 5000 && noproertiy.contains("2")){
+			  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges", i + 1,
+			  String.valueOf(legalTechnicalCharges));
+			  asser.assertEquals(result5legalTechnicalCharges, false);
+			  setCellData(xlFile, "Sheet1", "Actual Legal/Technical Charges deviation code", i + 1,
+					  String.valueOf(legalTechnicalChargesdeviatoncode));
+			  asser.assertEquals(legalTechnicalChargesdeviatoncode,
+			  "DEV-MICRO-LEG-TECH-PRO2-0"); }
+			  
+			  //condition pednding else if
+			  if (documentCharges >= 3000) {
+			  
+			  setCellData(xlFile, "Sheet1", "Actual Documentation Charges", i + 1,
+			  String.valueOf(documentCharges)); 
+			  asser.assertEquals(result6documentCharges, true); }
+			  
+			  else { setCellData(xlFile, "Sheet1", "Actual Documentation Charges",
+			  i + 1, String.valueOf(documentCharges));
+			  
+			  asser.assertEquals(result6documentCharges, false);
+			  setCellData(xlFile, "Sheet1", "Actual Documentation Charges deviation code",
+					  i + 1, String.valueOf(documentChargesdeviation));
+			  asser.assertEquals(documentChargesdeviation, "DEV-MICRO-DOCU-0"); } 
+			  
+			  if (ROI>= 23 && loanAmount >= 200000 && loanAmount <= 600000 && pRocessingFee >= 2.0
+			  && NET_INSURANCE_PENETRATION >= 3 &&
+			  PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&
+			  FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 &&
+			  stampDuty.contains("Yes") && legalTechnicalCharges < 5000 &&
+			  legalTechnicalCharges >= 3000 && noproertiy.contains("1")) 
+			  {
+			  setCellData(xlFile, "Sheet1", "Actual Final_status", i + 1,
+			  String.valueOf(final_status));
+			  
+			  } 
+			  else { setCellData(xlFile, "Sheet1", "Actual Final_status", i + 1,
+			  String.valueOf(final_status)); } 
+			  
+			  if (ROI >= 22 && loanAmount >= 600001 &&
+			  loanAmount <= 1000000 && pRocessingFee >= 2.0 && NET_INSURANCE_PENETRATION >=
+			  3 && PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&
+			  FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 &&
+			  stampDuty.contains("Yes") && legalTechnicalCharges < 5000 &&
+			  legalTechnicalCharges >= 3000 && noproertiy.contains("1")) 
+			  {
+			  setCellData(xlFile, "Sheet1", "Actual Final_status", i + 1,
+			  String.valueOf(final_status));
+			  
+			  } 
+			  else { setCellData(xlFile, "Sheet1", "Actual Final_status", i + 1,
+			  String.valueOf(final_status)); }
+			 
+
+		}
+		// asser.assertAll();
+	}
+	}	  
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import payload.pricingbre;
+import payload.test;
+import reporter.ExtentListeners;
+
+public class SL_GM_shakti_banking extends baseClass1 {
+	public RequestSpecification res;
+	public Response resp;
+	public float loanAmount;
+
+	@Test
+	public void Verify_roi_shakti_banking() throws IOException {
+		//getJsondata getjsn=new getJsondata(resp);
+		// String Path =
+		// "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\SL-GROMIC-SHAKTI-BANK_permutation_combination.xlsx";
+
+		// String postBody = readJson(Path);
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+
+		int rowNum = XLUtils.getRowCount(xlFile, "Sheet2");
+		int colNum = XLUtils.getCellCount(xlFile, "Sheet2", rowNum);
+		SoftAssert asser = new SoftAssert();
+		for (int i = 1; i <= 24; i++) {
+
+			String modifiedJson1 = pricing_bre_sl_shakti_banking.payload1(XLUtils.getCellData(xlFile, "Sheet2", i, 0),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 1), XLUtils.getCellData(xlFile, "Sheet2", i, 2),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 3), XLUtils.getCellData(xlFile, "Sheet2", i, 4),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 5), XLUtils.getCellData(xlFile, "Sheet2", i, 6),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 7), XLUtils.getCellData(xlFile, "Sheet2", i, 8),
+					XLUtils.getCellData(xlFile, "Sheet2", i, 9), XLUtils.getCellData(xlFile, "Sheet2", i, 10));
+
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "sheet2", i, 0));
+			// System.out.println(test.toString());
+			ExtentListeners.test.log(Status.INFO, XLUtils.getCellData(xlFile, "sheet2", i, 1));
+			String noproertiy = (XLUtils.getCellData(xlFile, "sheet2", i, 8));
+			setCellData(xlFile, "Sheet2", "Expected roi", i + 1,
+					String.valueOf(XLUtils.getCellData(xlFile, "sheet2", i, 0)));
+			res.body(modifiedJson1);
+
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson1);
+			Response resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+			
+
+			ROI = resp.jsonPath().getFloat(getresponse + ".standardROI.value");
+			System.out.println("Verify the ROI when ROI is:" + ROI);
+			setCellData(xlFile, "Sheet2", "Scenario description", i + 1,
+					String.valueOf("Verify the ROI when is" + ROI));
+			float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+			System.out.println(loanAmount);
+			
+			  pRocessingFee = resp.jsonPath().getFloat(getresponse +
+			  ".standardProcessingFee.value"); NET_INSURANCE_PENETRATION =
+			  resp.jsonPath().getFloat(getresponse +
+			  ".standardInsurancePenetration.value"); CERSAI =
+			  resp.jsonPath().getFloat(getresponse + ".CERSAI.value"); stampDuty =
+			  resp.jsonPath().getString(getresponse + ".stampDuty.value");
+			  PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath().getString(getresponse +
+			  ".standardPartPaymentcharges.value"); FORECLOSURE_CHARGES =
+			  resp.jsonPath().getString(getresponse + ".standardForeclosureCharges.value");
+			  legalTechnicalCharges = resp.jsonPath().getFloat(getresponse +
+			  ".legalTechnicalCharges.value"); documentCharges =
+			  resp.jsonPath().getFloat(getresponse + ".documentCharges.value"); //
+			  applicationProgramCode = resp.jsonPath().getString(getresponse + //
+			  ".applicationProgramCode.value"); messageroi =
+			  resp.jsonPath().getString(getresponse + ".standardROI.message"); resultroi =
+			  resp.jsonPath().getBoolean(getresponse + ".standardROI.result");
+			  result1stdPrcfee = resp.jsonPath().getBoolean(getresponse +
+			  ".standardProcessingFee.result"); result2InPenetration =
+			  resp.jsonPath().getBoolean(getresponse +
+			  ".standardInsurancePenetration.result"); resultCERSAI =
+			  resp.jsonPath().getBoolean(getresponse + ".CERSAI.result"); resultstampDuty =
+			  resp.jsonPath().getBoolean(getresponse + ".stampDuty.result");
+			  result3prePartPaycharges = resp.jsonPath().getBoolean(getresponse +
+			  ".standardPartPaymentcharges.result"); result4Forclousurechare =
+			  resp.jsonPath().getBoolean(getresponse +
+			  ".standardForeclosureCharges.result"); result5legalTechnicalCharges =
+			  resp.jsonPath().getBoolean(getresponse + ".legalTechnicalCharges.result");
+			  result6documentCharges = resp.jsonPath().getBoolean(getresponse +
+			  ".documentCharges.result"); resultapplicationprogramcode =
+			  resp.jsonPath().getBoolean(getresponse + ".applicationProgramCode.result");
+			  
+			  roideviationCode = resp.jsonPath().getString(dev +
+			  ".standardROI.deviationCode"); ProcessFeedeviationCode1 =
+			  resp.jsonPath().getString(dev + ".standardProcessingFee.deviationCode");
+			  InsurancePendeviationCode2 = resp.jsonPath().getString(dev +
+			  ".standardInsurancePenetration.deviationCode"); PrePayChargedeviationCode3 =
+			  resp.jsonPath().getString(dev + ".standardPartPaymentcharges.deviationCode");
+			  ForClosuredeviationCode4 = resp.jsonPath().getString(dev +
+			  ".standardForeclosureCharges.deviationCode"); CERSAIdeviationcode =
+			  resp.jsonPath().getString(dev + ".CERSAI.deviationCode");
+			  legalTechnicalChargesdeviatoncode = resp.jsonPath().getString(dev +
+			  ".legalTechnicalCharges.deviationCode"); documentChargesdeviation =
+			  resp.jsonPath().getString(dev + ".documentCharges.deviationCode"); message1 =
+			  resp.jsonPath().getString(dev + ".standardROI.message"); //
+			  //Assert.assertEquals(applicationProgramCode, "SL-GROMIC-SHAKTI-BANK");
+			  
+			  final_status = resp.jsonPath().getString("data.final_status"); 
+			  final_result =resp.jsonPath().getBoolean("data.final_result"); deviation_status =
+			  resp.jsonPath().getBoolean("data.deviation_status");
+			  
+			  }}
+			 
+
+//			Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+/*
+			if (ROI >= 23 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				asser.assertEquals(resultroi, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + resultroi + ",   ROI is  :" + ROI + ",  message  :" + messageroi);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(messageroi));
+				asser.assertEquals(messageroi, "Standard ROI norm is met");
+			} else if (ROI >= 22 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+
+			} else if (ROI >= 0 && ROI <= 21.99 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+
+			}
+			else if (ROI >=23 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				//setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				//asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, true);
+			}
+			else if (ROI >=22 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			else if (ROI <=21.99 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			
+			
+			
+			
+			if (ROI >= 22 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				asser.assertEquals(resultroi, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + resultroi + ",   ROI is  :" + ROI + ",  message  :" + messageroi);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(messageroi));
+				Assert.assertEquals(messageroi, "Standard ROI norm is met");
+
+			} else if (ROI >= 21.01 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "message        :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-0]");
+				// Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				asser.assertEquals(resultroi, false);
+			} else if (ROI >= 0 && ROI <= 20.99 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "message        :" + messageroi);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"Sheet2","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-1]");
+				// Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				asser.assertEquals(resultroi, false);
+			}
+			//========================
+			
+			else if (ROI >=22 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				//setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				//asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, true);
+			}
+			else if (ROI >=21.01 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			else if (ROI >=20.99 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "Sheet2", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "Sheet2", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "Sheet2", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			
+			 * else { setCellData(xlFile, "Sheet2", "Actual roi result", i + 1,
+			 * String.valueOf("Invalid input")); }
+			 
+			if (pRocessingFee >= 2.0) {
+
+				ExtentListeners.test.log(Status.INFO,
+						"PROCESSING_FEE  :" + pRocessingFee + " ,result  :" + result1stdPrcfee);
+				asser.assertEquals(result1stdPrcfee, true);
+
+			} else if (pRocessingFee >= 0 && pRocessingFee < 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee + " ,result  :"
+						+ result1stdPrcfee + ",deviationCode :" + ProcessFeedeviationCode1);
+				asser.assertEquals(result1stdPrcfee, false);
+				asser.assertEquals(ProcessFeedeviationCode1, "[DEV-MICRO-PF-0]");
+				// message pending
+			}
+			if (NET_INSURANCE_PENETRATION >= 3) {
+				ExtentListeners.test.log(Status.INFO, "NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION
+						+ ",   result  :" + result2InPenetration);
+				asser.assertEquals(result2InPenetration, true);
+			}
+
+			else if (NET_INSURANCE_PENETRATION >= 0 && NET_INSURANCE_PENETRATION < 3) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + NET_INSURANCE_PENETRATION + ",  result  :"
+						+ result2InPenetration + ",  deviationCode :" + InsurancePendeviationCode2);
+				asser.assertEquals(result2InPenetration, false);
+				asser.assertEquals(InsurancePendeviationCode2, "[DEV-MICRO-INSPEN-0]");
+				// message pending
+			}
+
+			if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + PRE_OR_PART_PAYMENT_CHARGES
+						+ ",    result  :" + result3prePartPaycharges);
+				asser.assertEquals(result3prePartPaycharges, true);
+				// message pending
+			} else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + PRE_OR_PART_PAYMENT_CHARGES + ",  result  :"
+						+ result3prePartPaycharges + ",  deviationCode :" + PrePayChargedeviationCode3);
+				asser.assertEquals(result3prePartPaycharges, false);
+				asser.assertEquals(PrePayChargedeviationCode3, "[DEV-MICRO-PRE-PART]");
+			}
+			if (FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES
+						+ ", result  :" + result4Forclousurechare);
+				Assert.assertEquals(result4Forclousurechare, true);
+				// message pending
+			} else if (FORECLOSURE_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + FORECLOSURE_CHARGES + ",  result  :"
+						+ result4Forclousurechare + "deviationCode :" + ForClosuredeviationCode4);
+				Assert.assertEquals(result4Forclousurechare, false);
+				Assert.assertEquals(ForClosuredeviationCode4, "[DEV-MICRO-FORE-CLOSURE]");
+				// message pending
+			}
+			if (CERSAI >= 500) {
+				ExtentListeners.test.log(Status.INFO, "CERSAI   :" + CERSAI + ",   result  :" + resultCERSAI);
+				asser.assertEquals(resultCERSAI, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO, "CERSAI  :" + CERSAI + ",  result  :" + resultCERSAI
+						+ ",  deviationCode :" + CERSAIdeviationcode);
+				asser.assertEquals(resultCERSAI, false);
+				asser.assertEquals(CERSAIdeviationcode, "[DEV-MICRO-CERSAI-0]");
+			}
+			if (stampDuty.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "CERSAI   :" + stampDuty + ",   result  :" + resultstampDuty);
+				asser.assertEquals(resultstampDuty, true);
+			}
+			if (legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1")) {
+				ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges   :" + legalTechnicalCharges
+						+ ",   result  :" + result5legalTechnicalCharges);
+				asser.assertEquals(result5legalTechnicalCharges, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO,
+						"legalTechnicalCharges  :" + legalTechnicalCharges + ",  result  :"
+								+ result5legalTechnicalCharges + ",  deviationCode :"
+								+ legalTechnicalChargesdeviatoncode);
+				asser.assertEquals(result5legalTechnicalCharges, false);
+				asser.assertEquals(legalTechnicalChargesdeviatoncode, "[DEV-MICRO-LEG-TECH-PRO1-0]");
+			}
+			
+			 * if(legalTechnicalCharges>=5000 && noproertiy.contains("noproertiy>=2")) {
+			 * ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges   :" +
+			 * legalTechnicalCharges + ",   result  :" + result5legalTechnicalCharges);
+			 * asser.assertEquals(result5legalTechnicalCharges, true); } else {
+			 * ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges  :" +
+			 * legalTechnicalCharges + ",  result  :" + result5legalTechnicalCharges +
+			 * ",  deviationCode :" + legalTechnicalChargesdeviatoncode);
+			 * asser.assertEquals(result5legalTechnicalCharges, false);
+			 * asser.assertEquals(legalTechnicalChargesdeviatoncode,
+			 * "[DEV-MICRO-LEG-TECH-PRO2-0]"); }
+			 
+			if (documentCharges >= 300) {
+				ExtentListeners.test.log(Status.INFO,
+						"documentCharges   :" + documentCharges + ",   result  :" + result6documentCharges);
+				asser.assertEquals(result6documentCharges, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO, "documentCharges  :" + documentCharges + ",  result  :"
+						+ result6documentCharges + ",  deviationCode :" + documentChargesdeviation);
+				asser.assertEquals(result6documentCharges, false);
+				asser.assertEquals(documentChargesdeviation, "[DEV-MICRO-DOCU-0]");
+			}
+			if(ROI >= 23 && loanAmount >= 200000 && loanAmount <= 600000 && pRocessingFee >= 2.0 && NET_INSURANCE_PENETRATION >= 3 && 
+					PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 && stampDuty.contains("Yes") &&
+					legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1"))
+			{
+				setCellData(xlFile, "Sheet2", "Actual final_status", i + 1, String.valueOf(final_status));
+				
+			}
+			else {
+				setCellData(xlFile, "Sheet2", "Actual final_status", i + 1, String.valueOf(final_status));
+			}
+			if(ROI >= 22 && loanAmount >= 600001 && loanAmount <= 1000000 && pRocessingFee >= 2.0 && NET_INSURANCE_PENETRATION >= 3 && 
+					PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 && stampDuty.contains("Yes") &&
+					legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1"))
+			{
+				setCellData(xlFile, "Sheet2", "Actual final_status", i + 1, String.valueOf(final_status));
+				
+			}
+			else {
+				setCellData(xlFile, "Sheet2", "Actual final_status", i + 1, String.valueOf(final_status));
+			}
+
+		}
+		asser.assertAll();
+	}*/
+
+	private String readJson(String fileNam) {
+
+		try {
+			return new String(Files.readAllBytes(Paths.get(fileNam)));
+		} catch (Exception e) {
+
+			throw new RuntimeException("Error reading json file+");
+		}
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+package Pricing_Bre.sl_gm_shakti_secured_banking;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.junit.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.Status;
+
+import Pricing_Bre.baseClass1;
+import UtilityClasses.XLUtils;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import payload.pricing_bre_sl_shakti_banking;
+import payload.pricingbre;
+import payload.test;
+import reporter.ExtentListeners;
+
+@Test
+public class sl_gm_shakti_secured_banking_PF extends baseClass1
+{
+	public RequestSpecification res;
+	public Response resp;
+	public float loanAmount;
+
+	@Test
+	public void Verify_roi_shakti_banking() throws IOException {
+		//getJsondata getjsn=new getJsondata(resp);
+		// String Path =
+		// "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\Pricing_bre.json";
+		String xlFile = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\SL-GROMIC-SHAKTI-BANK_permutation_combination.xlsx";
+
+		// String postBody = readJson(Path);
+		res = given().spec(requestSpecification()).header("Content-Type", "application/json").header("Authorization",
+				"Bearer tD6tL7BpRIW9vNmvDBgZ");
+
+		int rowNum = XLUtils.getRowCount(xlFile, "PF");
+		int colNum = XLUtils.getCellCount(xlFile, "PF", rowNum);
+		SoftAssert asser = new SoftAssert();
+		for (int i = 1; i <= 24; i++) {
+
+			String modifiedJson1 = pricing_bre_sl_shakti_banking.payload1(XLUtils.getCellData(xlFile, "PF", i, 0),
+					XLUtils.getCellData(xlFile, "PF", i, 1), XLUtils.getCellData(xlFile, "PF", i, 2),
+					XLUtils.getCellData(xlFile, "PF", i, 3), XLUtils.getCellData(xlFile, "PF", i, 4),
+					XLUtils.getCellData(xlFile, "PF", i, 5), XLUtils.getCellData(xlFile, "PF", i, 6),
+					XLUtils.getCellData(xlFile, "PF", i, 7), XLUtils.getCellData(xlFile, "PF", i, 8),
+					XLUtils.getCellData(xlFile, "PF", i, 9), XLUtils.getCellData(xlFile, "PF", i, 10));
+
+			ExtentListeners.test.log(Status.INFO,
+					"TC_Verify ROI,when ROI is   :" + XLUtils.getCellData(xlFile, "PF", i, 0));
+			// System.out.println(test.toString());
+			ExtentListeners.test.log(Status.INFO, XLUtils.getCellData(xlFile, "PF", i, 1));
+			String noproertiy = (XLUtils.getCellData(xlFile, "PF", i, 8));
+			setCellData(xlFile, "PF", "Expected roi", i + 1,
+					String.valueOf(XLUtils.getCellData(xlFile, "PF", i, 0)));
+			res.body(modifiedJson1);
+
+			ExtentListeners.test.log(Status.INFO, "Request Body  :" + modifiedJson1);
+			Response resp = res.request(Method.POST, "/api/v1/run");
+			String resBody = resp.getBody().asString();
+			ExtentListeners.test.log(Status.INFO, "Response is  :" + resBody);
+			// System.out.println("Response=>" + resp.prettyPrint());
+
+			Boolean success = resp.jsonPath().get("success");
+			Assert.assertEquals(success, true);
+			ExtentListeners.test.log(Status.INFO, "success            :" + success);
+			int statuscode = resp.getStatusCode();
+			Assert.assertEquals(statuscode, 200);
+
+			ExtentListeners.test.log(Status.INFO, "Status code        :" + statuscode);
+			
+
+			ROI = resp.jsonPath().getFloat(getresponse + ".standardROI.value");
+			System.out.println("Verify the ROI when ROI is:" + ROI);
+			setCellData(xlFile, "PF", "Scenario description", i + 1,
+					String.valueOf("Verify the ROI when is" + ROI));
+			float loanAmount = resp.jsonPath().getFloat("data.output.application.loanAmount");
+			System.out.println(loanAmount);
+			
+			  pRocessingFee = resp.jsonPath().getFloat(getresponse +
+			  ".standardProcessingFee.value"); NET_INSURANCE_PENETRATION =
+			  resp.jsonPath().getFloat(getresponse +
+			  ".standardInsurancePenetration.value"); CERSAI =
+			  resp.jsonPath().getFloat(getresponse + ".CERSAI.value"); stampDuty =
+			  resp.jsonPath().getString(getresponse + ".stampDuty.value");
+			  PRE_OR_PART_PAYMENT_CHARGES = resp.jsonPath().getString(getresponse +
+			  ".standardPartPaymentcharges.value"); FORECLOSURE_CHARGES =
+			  resp.jsonPath().getString(getresponse + ".standardForeclosureCharges.value");
+			  legalTechnicalCharges = resp.jsonPath().getFloat(getresponse +
+			  ".legalTechnicalCharges.value"); documentCharges =
+			  resp.jsonPath().getFloat(getresponse + ".documentCharges.value"); //
+			  applicationProgramCode = resp.jsonPath().getString(getresponse + //
+			  ".applicationProgramCode.value"); messageroi =
+			  resp.jsonPath().getString(getresponse + ".standardROI.message"); resultroi =
+			  resp.jsonPath().getBoolean(getresponse + ".standardROI.result");
+			  result1stdPrcfee = resp.jsonPath().getBoolean(getresponse +
+			  ".standardProcessingFee.result"); result2InPenetration =
+			  resp.jsonPath().getBoolean(getresponse +
+			  ".standardInsurancePenetration.result"); resultCERSAI =
+			  resp.jsonPath().getBoolean(getresponse + ".CERSAI.result"); resultstampDuty =
+			  resp.jsonPath().getBoolean(getresponse + ".stampDuty.result");
+			  result3prePartPaycharges = resp.jsonPath().getBoolean(getresponse +
+			  ".standardPartPaymentcharges.result"); result4Forclousurechare =
+			  resp.jsonPath().getBoolean(getresponse +
+			  ".standardForeclosureCharges.result"); result5legalTechnicalCharges =
+			  resp.jsonPath().getBoolean(getresponse + ".legalTechnicalCharges.result");
+			  result6documentCharges = resp.jsonPath().getBoolean(getresponse +
+			  ".documentCharges.result"); resultapplicationprogramcode =
+			  resp.jsonPath().getBoolean(getresponse + ".applicationProgramCode.result");
+			  
+			  roideviationCode = resp.jsonPath().getString(dev +
+			  ".standardROI.deviationCode"); ProcessFeedeviationCode1 =
+			  resp.jsonPath().getString(dev + ".standardProcessingFee.deviationCode");
+			  InsurancePendeviationCode2 = resp.jsonPath().getString(dev +
+			  ".standardInsurancePenetration.deviationCode"); PrePayChargedeviationCode3 =
+			  resp.jsonPath().getString(dev + ".standardPartPaymentcharges.deviationCode");
+			  ForClosuredeviationCode4 = resp.jsonPath().getString(dev +
+			  ".standardForeclosureCharges.deviationCode"); CERSAIdeviationcode =
+			  resp.jsonPath().getString(dev + ".CERSAI.deviationCode");
+			  legalTechnicalChargesdeviatoncode = resp.jsonPath().getString(dev +
+			  ".legalTechnicalCharges.deviationCode"); documentChargesdeviation =
+			  resp.jsonPath().getString(dev + ".documentCharges.deviationCode"); message1 =
+			  resp.jsonPath().getString(dev + ".standardROI.message"); //
+			  //Assert.assertEquals(applicationProgramCode, "SL-GROMIC-SHAKTI-BANK");
+			  
+			  final_status = resp.jsonPath().getString("data.final_status"); 
+			  final_result =resp.jsonPath().getBoolean("data.final_result"); deviation_status =
+			  resp.jsonPath().getBoolean("data.deviation_status");
+			 
+
+//			Assert.assertEquals(applicationProgramCode, "USL-SANJ-ABB");
+
+			if (ROI >= 23 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				asser.assertEquals(resultroi, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + resultroi + ",   ROI is  :" + ROI + ",  message  :" + messageroi);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(messageroi));
+				asser.assertEquals(messageroi, "Standard ROI norm is met");
+			} else if (ROI >= 22 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+
+			} else if (ROI >= 0 && ROI <= 21.99 && loanAmount >= 200000 && loanAmount <= 600000) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+
+			}
+			else if (ROI >=23 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				//setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				//asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, true);
+			}
+			else if (ROI >=22 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			else if (ROI <=21.99 && loanAmount < 200000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			
+			
+			
+			
+			if (ROI >= 22 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				asser.assertEquals(resultroi, true);
+				ExtentListeners.test.log(Status.INFO,
+						"result  :" + resultroi + ",   ROI is  :" + ROI + ",  message  :" + messageroi);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(messageroi));
+				Assert.assertEquals(messageroi, "Standard ROI norm is met");
+
+			} else if (ROI >= 21.01 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "message        :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-0]");
+				// Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				asser.assertEquals(resultroi, false);
+			} else if (ROI >= 0 && ROI <= 20.99 && loanAmount >= 600001 && loanAmount <= 1000000) {
+
+				ExtentListeners.test.log(Status.INFO, "ROI is less than 16.01 :" + ROI + " ,result        :" + resultroi
+						+ "  ,deviationCode  :" + roideviationCode + "message        :" + messageroi);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				// setCellData(xlFile,"PF","message",i+1,String.valueOf(message1));
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-1]");
+				// Assert.assertEquals(message1, "[Commerical Norms - Customer IRR >=3%]");
+				asser.assertEquals(resultroi, false);
+			}
+			//========================
+			
+			else if (ROI >=22 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				//setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				//asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST0TO60-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, true);
+			}
+			else if (ROI >=21.01 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-0]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			else if (ROI >=20.99 && loanAmount > 1000000 ) {
+
+				ExtentListeners.test.log(Status.INFO, "   ROI is less than 19 :" + ROI + " ,Result       :" + resultroi
+						+ "  ,deviationCode :" + roideviationCode + " ,message       :" + message1);
+				setCellData(xlFile, "PF", "Actual roi result", i + 1, String.valueOf(resultroi));
+				setCellData(xlFile, "PF", "Actual roi", i + 1, String.valueOf(ROI));
+				
+				setCellData(xlFile, "PF", "Actual deviation code", i + 1, String.valueOf(roideviationCode));
+				asser.assertEquals(roideviationCode, "[DEV-MISHA-CUST60TO10-IRR-1]");
+				// asser.assertEquals(message1, "[Commerical Norms-Customer IRR > 0%]");
+				asser.assertEquals(resultroi, false);
+			}
+			/*
+			 * else { setCellData(xlFile, "PF", "Actual roi result", i + 1,
+			 * String.valueOf("Invalid input")); }
+			 */
+			if (pRocessingFee >= 2.0) {
+
+				ExtentListeners.test.log(Status.INFO,
+						"PROCESSING_FEE  :" + pRocessingFee + " ,result  :" + result1stdPrcfee);
+				asser.assertEquals(result1stdPrcfee, true);
+
+			} else if (pRocessingFee >= 0 && pRocessingFee < 2.0) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + pRocessingFee + " ,result  :"
+						+ result1stdPrcfee + ",deviationCode :" + ProcessFeedeviationCode1);
+				asser.assertEquals(result1stdPrcfee, false);
+				asser.assertEquals(ProcessFeedeviationCode1, "[DEV-MICRO-PF-0]");
+				// message pending
+			}
+			if (NET_INSURANCE_PENETRATION >= 3) {
+				ExtentListeners.test.log(Status.INFO, "NET_INSURANCE_PENETRATION   :" + NET_INSURANCE_PENETRATION
+						+ ",   result  :" + result2InPenetration);
+				asser.assertEquals(result2InPenetration, true);
+			}
+
+			else if (NET_INSURANCE_PENETRATION >= 0 && NET_INSURANCE_PENETRATION < 3) {
+
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + NET_INSURANCE_PENETRATION + ",  result  :"
+						+ result2InPenetration + ",  deviationCode :" + InsurancePendeviationCode2);
+				asser.assertEquals(result2InPenetration, false);
+				asser.assertEquals(InsurancePendeviationCode2, "[DEV-MICRO-INSPEN-0]");
+				// message pending
+			}
+
+			if (PRE_OR_PART_PAYMENT_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + PRE_OR_PART_PAYMENT_CHARGES
+						+ ",    result  :" + result3prePartPaycharges);
+				asser.assertEquals(result3prePartPaycharges, true);
+				// message pending
+			} else if (PRE_OR_PART_PAYMENT_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + PRE_OR_PART_PAYMENT_CHARGES + ",  result  :"
+						+ result3prePartPaycharges + ",  deviationCode :" + PrePayChargedeviationCode3);
+				asser.assertEquals(result3prePartPaycharges, false);
+				asser.assertEquals(PrePayChargedeviationCode3, "[DEV-MICRO-PRE-PART]");
+			}
+			if (FORECLOSURE_CHARGES.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "PRE_OR_PART_PAYMENT_CHARGES  :" + FORECLOSURE_CHARGES
+						+ ", result  :" + result4Forclousurechare);
+				Assert.assertEquals(result4Forclousurechare, true);
+				// message pending
+			} else if (FORECLOSURE_CHARGES.contains("No")) {
+				ExtentListeners.test.log(Status.INFO, "PROCESSING_FEE  :" + FORECLOSURE_CHARGES + ",  result  :"
+						+ result4Forclousurechare + "deviationCode :" + ForClosuredeviationCode4);
+				Assert.assertEquals(result4Forclousurechare, false);
+				Assert.assertEquals(ForClosuredeviationCode4, "[DEV-MICRO-FORE-CLOSURE]");
+				// message pending
+			}
+			if (CERSAI >= 500) {
+				ExtentListeners.test.log(Status.INFO, "CERSAI   :" + CERSAI + ",   result  :" + resultCERSAI);
+				asser.assertEquals(resultCERSAI, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO, "CERSAI  :" + CERSAI + ",  result  :" + resultCERSAI
+						+ ",  deviationCode :" + CERSAIdeviationcode);
+				asser.assertEquals(resultCERSAI, false);
+				asser.assertEquals(CERSAIdeviationcode, "[DEV-MICRO-CERSAI-0]");
+			}
+			if (stampDuty.contains("Yes")) {
+				ExtentListeners.test.log(Status.INFO, "CERSAI   :" + stampDuty + ",   result  :" + resultstampDuty);
+				asser.assertEquals(resultstampDuty, true);
+			}
+			if (legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1")) {
+				ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges   :" + legalTechnicalCharges
+						+ ",   result  :" + result5legalTechnicalCharges);
+				asser.assertEquals(result5legalTechnicalCharges, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO,
+						"legalTechnicalCharges  :" + legalTechnicalCharges + ",  result  :"
+								+ result5legalTechnicalCharges + ",  deviationCode :"
+								+ legalTechnicalChargesdeviatoncode);
+				asser.assertEquals(result5legalTechnicalCharges, false);
+				asser.assertEquals(legalTechnicalChargesdeviatoncode, "[DEV-MICRO-LEG-TECH-PRO1-0]");
+			}
+			/*
+			 * if(legalTechnicalCharges>=5000 && noproertiy.contains("noproertiy>=2")) {
+			 * ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges   :" +
+			 * legalTechnicalCharges + ",   result  :" + result5legalTechnicalCharges);
+			 * asser.assertEquals(result5legalTechnicalCharges, true); } else {
+			 * ExtentListeners.test.log(Status.INFO, "legalTechnicalCharges  :" +
+			 * legalTechnicalCharges + ",  result  :" + result5legalTechnicalCharges +
+			 * ",  deviationCode :" + legalTechnicalChargesdeviatoncode);
+			 * asser.assertEquals(result5legalTechnicalCharges, false);
+			 * asser.assertEquals(legalTechnicalChargesdeviatoncode,
+			 * "[DEV-MICRO-LEG-TECH-PRO2-0]"); }
+			 */
+			if (documentCharges >= 300) {
+				ExtentListeners.test.log(Status.INFO,
+						"documentCharges   :" + documentCharges + ",   result  :" + result6documentCharges);
+				asser.assertEquals(result6documentCharges, true);
+			} else {
+				ExtentListeners.test.log(Status.INFO, "documentCharges  :" + documentCharges + ",  result  :"
+						+ result6documentCharges + ",  deviationCode :" + documentChargesdeviation);
+				asser.assertEquals(result6documentCharges, false);
+				asser.assertEquals(documentChargesdeviation, "[DEV-MICRO-DOCU-0]");
+			}
+			if(ROI >= 23 && loanAmount >= 200000 && loanAmount <= 600000 && pRocessingFee >= 2.0 && NET_INSURANCE_PENETRATION >= 3 && 
+					PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 && stampDuty.contains("Yes") &&
+					legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1"))
+			{
+				setCellData(xlFile, "PF", "Actual final_status", i + 1, String.valueOf(final_status));
+				
+			}
+			else {
+				setCellData(xlFile, "PF", "Actual final_status", i + 1, String.valueOf(final_status));
+			}
+			if(ROI >= 22 && loanAmount >= 600001 && loanAmount <= 1000000 && pRocessingFee >= 2.0 && NET_INSURANCE_PENETRATION >= 3 && 
+					PRE_OR_PART_PAYMENT_CHARGES.contains("Yes") &&FORECLOSURE_CHARGES.contains("Yes") && CERSAI >= 500 && stampDuty.contains("Yes") &&
+					legalTechnicalCharges < 5000 && legalTechnicalCharges >= 3000 && noproertiy.contains("1"))
+			{
+				setCellData(xlFile, "PF", "Actual final_status", i + 1, String.valueOf(final_status));
+				
+			}
+			else {
+				setCellData(xlFile, "PF", "Actual final_status", i + 1, String.valueOf(final_status));
+			}
+
+		}
+		asser.assertAll();
+	}
+
+	private String readJson(String fileNam) {
+
+		try {
+			return new String(Files.readAllBytes(Paths.get(fileNam)));
+		} catch (Exception e) {
+
+			throw new RuntimeException("Error reading json file+");
+		}
+	}
+
+	
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+Reporter
+
+package reporter;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Date;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+
+public class ExtentListeners implements ITestListener {
+	public static ExtentTest test;
+//	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//	static LocalDateTime now = LocalDateTime.now();
+	static String fileName = "Extent_" + ".html";
+//	static String fileName1 = "Extent_Logs_Report" + ".html";
+	private static ExtentReports extent = ExtentManager
+			.createInstance(System.getProperty("user.dir") + "/report/" + fileName);
+	public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
+
+	public void onTestStart(ITestResult result) {
+
+		test = extent
+				.createTest(result.getTestClass().getName() + "     @TestCase : " + result.getMethod().getMethodName());
+		testReport.set(test);
+
+	}
+
+	public void onTestSuccess(ITestResult result) {
+
+		String methodName = result.getMethod().getMethodName();
+		String logText = "<b>" + "TEST CASE:- " + methodName + " PASSED" + "</b>";
+		Markup m = MarkupHelper.createLabel(logText, ExtentColor.GREEN);
+		testReport.get().pass(m);
+//		ExtentManager.captureScreenshot();
+//		testReport.get().pass("<b>" + "<font color=" + "green>" + "Screenshot of success" + "</font>" + "</b>",
+//				MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
+	}
+
+	public void onTestFailure(ITestResult result) {
+
+		String excepionMessage = Arrays.toString(result.getThrowable().getStackTrace());
+		testReport.get()
+				.fail("<details>" + "<summary>" + "<b>" + "<font color=" + "red>" + "Exception Occured:Click to see"
+						+ "</font>" + "</b >" + "</summary>" + excepionMessage.replaceAll(",", "<br>") + "</details>"
+						+ " \n");
+
+//		ExtentManager.captureScreenshot();
+//		testReport.get().fail("<b>" + "<font color=" + "red>" + "Screenshot of failure" + "</font>" + "</b>",
+//				MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
+
+		String failureLogg = "TEST CASE FAILED";
+		Markup m = MarkupHelper.createLabel(failureLogg, ExtentColor.RED);
+		testReport.get().log(Status.FAIL, m);
+
+	}
+
+	public void onTestSkipped(ITestResult result) {
+		String methodName = result.getMethod().getMethodName();
+		String logText = "<b>" + "Test Case:- " + methodName + " Skipped" + "</b>";
+		Markup m = MarkupHelper.createLabel(logText, ExtentColor.YELLOW);
+		testReport.get().skip(m);
+
+	}
+
+	public static void captureScreenShot() {
+		try {
+//Thread.sleep(1000);
+//			ExtentManager.captureScreenshot();
+			testReport.get().pass("<b>" + "<font color=" + "green>" + "Screenshot" + "</font>" + "</b>",
+					MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
+		} catch (Exception e) {
+			System.out.println("Exception in Capture ScreenShot" + e);
+		}
+	}
+
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+
+	}
+
+	public void onFinish(ITestContext context) {
+
+		if (extent != null) {
+
+			extent.flush();
+		}
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------
+package reporter;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+
+
+public class ExtentManager {
+
+	private static ExtentReports extent;
+
+	public static ExtentReports createInstance(String fileName) {
+		ExtentSparkReporter htmlReporter = new ExtentSparkReporter(fileName);
+
+		htmlReporter.config().setTheme(Theme.STANDARD);
+		htmlReporter.config().setDocumentTitle(fileName);
+		htmlReporter.config().setEncoding("utf-8");
+		htmlReporter.config().setReportName(fileName);
+
+		extent = new ExtentReports();
+		extent.attachReporter(htmlReporter);
+		extent.setSystemInfo("Author", "Prashant Kumar");
+		extent.setSystemInfo("Automation Tester", "Team");
+		extent.setSystemInfo("Organization", "UGRO");
+		extent.setSystemInfo("BUILD", "UGRO Application");
+
+		return extent;
+
+	}
+
+	public static ExtentReports getInstance() {
+		return extent;
+	}
+
+	public static String screenshotPath;
+	public static String screenshotName;
+
+//	public static void captureScreenshot() {
+//
+//		File scrFile = ((TakesScreenshot) Baselibrary.driver).getScreenshotAs(OutputType.FILE);
+//
+//		Date d = new Date();
+//		screenshotName = d.toString().replace(":", "").replace(" ", "") + ".jpg";
+//
+//		try {
+//			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "/report/" + screenshotName));
+//		} catch (IOException e) {
+//// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------
+Utility Classes
+
+package UtilityClasses;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+ 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+ 
+public class ExcelWriter {
+ 
+    public static void main(String[] args) {
+        // Sample data
+        List<String> columnNames = List.of("Ser No.",
+                "Scenario no.",
+                "Scenario description",
+                "Test data",
+                "Expected ROI",
+                "Actual ROI",
+                "Expect standardROI result",
+                "Actual standardROI result",
+                "Expected Deviation status",
+                "Actual Deviation status",
+                "Expected deviation code",
+                "Actual deviation code");
+        List<List<Object>> data = List.of(
+        		List.of("Ser No.",
+                        "Scenario no.",
+                        "Scenario description",
+                        "Test data",
+                        "Expected ROI",
+                        "Actual ROI",
+                        "Expect standardROI result",
+                        "Actual standardROI result",
+                        "Expected Deviation status",
+                        "Actual Deviation status",
+                        "Expected deviation code",
+                        "Actual deviation code")
+		/*
+		 * List.of("Alice", 25, 60000), List.of("Bob", 30, 70000), List.of("Charlie",
+		 * 22, 55000)
+		 */
+        );
+ 
+        String outputFilePath = "C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\newsheet.xlsx";
+        String sheetName = "Test_Data";
+ 
+        writeDataToExcel(columnNames, data, outputFilePath, sheetName);
+    }
+ 
+    public static void writeDataToExcel(List<String> columnNames, List<List<Object>> data,
+                                        String outputPath, String sheetName) {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet(sheetName);
+ 
+        // Write column names
+        Row headerRow = sheet.createRow(0);
+        for (int i = 0; i < columnNames.size(); i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnNames.get(i));
+        }
+ 
+        // Write data rows
+        for (int rowIndex = 0; rowIndex < data.size(); rowIndex++) {
+            Row dataRow = sheet.createRow(rowIndex + 1);
+            List<Object> rowData = data.get(rowIndex);
+            for (int colIndex = 0; colIndex < rowData.size(); colIndex++) {
+                Cell cell = dataRow.createCell(colIndex);
+                Object value = rowData.get(colIndex);
+                if (value instanceof String) {
+                    cell.setCellValue((String) value);
+                } else if (value instanceof Integer) {
+                    cell.setCellValue((Integer) value);
+                }
+            }
+        }
+ 
+        // Save the workbook to a file
+        try (FileOutputStream fileOut = new FileOutputStream(outputPath)) {
+            workbook.write(fileOut);
+            System.out.println("Data written to " + outputPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------
+package UtilityClasses;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class ReadConfig {
+
+	Properties prop;
+
+	public ReadConfig() {
+
+		try {
+
+			File src = new File(
+					"C:\\Users\\Prashant.Singh\\eclipse-workspace1\\yrestassured_bre\\src\\test\\resourcess\\testdata\\config.properties");
+
+			FileInputStream fis = new FileInputStream(src);
+			prop = new Properties();
+			prop.load(fis);
+
+		} catch (Exception e) {
+
+			System.out.println("Issue in ReadConfig");
+		}
+
+	}
+
+	public String getToken() {
+
+		String token = prop.getProperty("token");
+
+		return token;
+
+	}
+
+	
+	  public String getEndPoint() {
+	  
+	  String endPoint = prop.getProperty("username"); 
+	  return endPoint; }
+	  
+	  
+}
+-----------------------------------------------------------------------------------------------------------------------
+package UtilityClasses;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class XLUtils {
+
+	static FileInputStream fis;
+	static XSSFWorkbook wb;
+	static XSSFSheet sh;
+	
+	public static String getCellData(String xlsFile, String xlsheet, int rownum, int cellnum) throws IOException {
+		 fis = new FileInputStream(xlsFile);
+		 wb = new XSSFWorkbook(fis);
+		 sh = wb.getSheet(xlsheet);
+		XSSFRow row = sh.getRow(rownum);
+		XSSFCell cell = row.getCell(cellnum);
+
+		//String cellData = String.valueOf(cell.getNumericCellValue());
+		
+		String cellData = "";
+
+		if(cell!=null) {
+			
+			switch (cell.getCellType()) {
+			case STRING:
+				cellData = cell.getStringCellValue();
+				break;
+
+			case NUMERIC:
+				cellData = String.valueOf(cell.getNumericCellValue());
+				break;
+			/*
+			 * case FLOAT:
+			 * 
+			 * cellData = String.valueOf(cell.getNumericCellValue()); break;
+			 */
+			case BOOLEAN:
+				cellData  = String.valueOf(cell.getBooleanCellValue());
+			
+			default:
+				break;
+			}
+		}
+
+		wb.close();
+		fis.close();
+		return cellData;
+	}
+
+	public static int getRowCount(String xlsFile, String xlsheet) throws IOException {
+		FileInputStream fis = new FileInputStream(xlsFile);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+		XSSFSheet sh = wb.getSheet(xlsheet);
+		int rowCount = sh.getLastRowNum();
+
+		wb.close();
+		fis.close();
+
+		return rowCount;
+	}
+
+	public static int getCellCount(String xlsFile, String xlsheet, int rownum) throws IOException {
+		FileInputStream fis = new FileInputStream(xlsFile);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+		XSSFSheet sh = wb.getSheet(xlsheet);
+		XSSFRow row = sh.getRow(rownum);
+
+		int cellCount = row.getLastCellNum();
+
+		wb.close();
+		fis.close();
+
+		return cellCount;
+	}
+	/*
+	 * public static int printcell ( ) { HSSFCell cell =
+	 * sheet.getRow(1).createCell(6); if(confirmationMessage.isDisplayed()){
+	 * cell.setCellValue("PASS"); }else{ cell.setCellValue("FAIL"); }//To write into
+	 * Excel FileFileOutputStream outputStream = new
+	 * FileOutputStream("E:\\TestData\\TestData.xls"); wb.write(outputStream); }
+	 */
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Src test resources test data
+
+baseUrl=https://rules-uat.ugrocapital.com
+token=Bearer tD6tL7BpRIW9vNmvDBgZ
+endpoint=/api/v1/run
+-----------------------------------------------------------------------------------------------------------------------
+  
+-----------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
